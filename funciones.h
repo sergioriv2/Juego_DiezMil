@@ -8,7 +8,7 @@
 using namespace std;
 using namespace rlutil;
 
-int selectDraw(int x, int y, int y2); // CON ESTO SE DIBUJA LAS FLECHAS DE LOS MENUS
+int selectDraw(int x, int y, int y2); // CON ESTO SE DIBUJA LAS FLECHAS DE LOS MENUS | x = POSICION EN X DE LAS FLECHAS, y = PRIMERA OPCION DEL MENU, y2 = ULTIMA OPCION DEL MENU
 
 int selectDraw(int x, int y, int y2){
 
@@ -60,7 +60,7 @@ printf("%c", 174);
     }
 
     setColor(WHITE);
-    return val_Y;
+    return val_Y; // SE DEVUELVE LA ULTIMA UBICACION DE LA FLECHA AL PONER ENTER
 
 }
 
