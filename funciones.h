@@ -64,20 +64,23 @@ void ingame1(char nombre[15])
 
     underlineDraw(2, 3, 115);
 
-    locate(3, 2);
+   locate(3, 2);
     cout << "TURNO DE: ";
     setColor(GREEN);
     cout << nombre;
     setColor(WHITE);
-    cout << "    |\tRONDA N: ";
+    locate(26, 2);
+    cout << "|\tRONDA N: ";
     setColor(GREEN);
     cout << ronda;
     setColor(WHITE);
-    cout << "    |\tLANZAMIENTO N: ";
+    locate(49, 2);
+    cout << "|\tLANZAMIENTO N: ";
     setColor(GREEN);
     cout << lanzamiento;
     setColor(WHITE);
-    cout << "    |\tPUNTUACION ACTUAL: ";
+    locate(77, 2);
+    cout << "|\tPUNTUACION ACTUAL: ";
     setColor(GREEN);
     cout << puntuacion;
     setColor(WHITE);
@@ -136,7 +139,9 @@ void ingame1(char nombre[15])
                     break;
                 }
             }
-
+                    locate(6,23);
+                    cout << "(Valores del vector de dados): ";
+                
                     locate(6, 25);
 
                     mostrarDados(valorDados);
