@@ -24,19 +24,19 @@ void ingame1(char nombre[15]);
 void ingame2(char nombre1[15], char nombre2[15]);
 // DESARROLLO DEL JUEGO PARA 2 JUGADORES
 
-void unJugador();
+int unJugador(char nombreJ1[]);
 
 void dosJugadores();
 
-void puntuacionMax();
+int puntuacionMax();
 
 void dibValorDados(int ronda, int dados[]);
 
 ///------------------- DESARROLLO DE FUNCIONES ----------------------
 
-void unJugador()
+int unJugador(char nombreJ1[])
 {
-    char nombreJ1[15];
+    int rondasg;
 
     locate(50, 3);
     cout << "UN JUGADOR";
@@ -50,10 +50,14 @@ void unJugador()
     locate(46,8);
     cin.getline(nombreJ1, 15);
 
+    locate(46,12);
+    cout << "Ingresar la cantidad de rondas ganadoras: ";
+    cin >> rondasg;
+
     system("cls");
     borderDraw();
 
-    ingame1(nombreJ1);
+return rondasg;
 
 }
 
@@ -64,7 +68,7 @@ void ingame1(char nombre[15])
 
     underlineDraw(2, 3, 115);
 
-   locate(3, 2);
+    locate(3, 2);
     cout << "TURNO DE: ";
     setColor(GREEN);
     cout << nombre;
@@ -104,10 +108,10 @@ void ingame1(char nombre[15])
             ronda++;
             lanzamiento++;
 
-            locate(34, 2);
+            locate(42, 2);
             setColor(GREEN);
             cout << ronda;
-            locate(56, 2);
+            locate(72, 2);
             cout << lanzamiento;
             setColor(WHITE);
 
@@ -139,9 +143,9 @@ void ingame1(char nombre[15])
                     break;
                 }
             }
+
                     locate(6,23);
                     cout << "(Valores del vector de dados): ";
-                
                     locate(6, 25);
 
                     mostrarDados(valorDados);
@@ -219,8 +223,7 @@ void ingame1(char nombre[15])
         }
 
 
+int puntuacionMax()
+{
 
-
-
-
-#endif // FUNCIONES_H_INCLUDED
+}
