@@ -39,6 +39,8 @@ void dibValorDados(int ronda, int dados[]);
 
 void nombMax (char mayorJugador[5][20]);
 
+int siguejuego(bool sigue);
+
 ///------------------- DESARROLLO DE FUNCIONES ----------------------
 
 int unJugador(char nom[])/// dejo de ser void por que busco el retorno del nombre de la persona y que quede fijo en main mientras se juega.
@@ -179,6 +181,70 @@ int s;
     return s;
 
 }
+
+bool siguejuego(bool sigue){ /// para dos jugadores
+
+
+
+
+
+}
+
+
+int selectDraw(int x, int y, int y2){
+
+rlutil::setColor(rlutil::LIGHTBLUE);
+int val_Y = y, key = 1;
+
+rlutil::locate(x, val_Y);
+printf("%c", 174);
+
+    while(key != 13){
+        key = getch();
+        switch (key)
+        {
+        case 80:
+            rlutil::locate(x, val_Y);
+            cout << " ";
+            val_Y++;
+            rlutil::locate(x, val_Y);
+            printf("%c", 174);
+            break;
+        case 72:
+            rlutil::locate(x, val_Y);
+            cout << " ";
+            val_Y--;
+            rlutil::locate(x, val_Y);
+            printf("%c", 174);
+            break;
+        }
+        if(val_Y>y2)
+        {
+            rlutil::locate(x, val_Y);
+            cout << " ";
+            val_Y--;
+            rlutil::locate(x, val_Y);
+            printf("%c", 174);
+        }
+        else
+        {
+            if(val_Y<y)
+            {
+                rlutil::locate(x, val_Y);
+                cout << " ";
+                val_Y++;
+                rlutil::locate(x, val_Y);
+                printf("%c", 174);
+            }
+        }
+
+    }
+
+    setColor(WHITE);
+    return val_Y; // SE DEVUELVE LA ULTIMA UBICACION DE LA FLECHA AL PONER ENTER
+
+}
+
 /// --------- DESARROLLO DADOS ---------------------
 
         void mostrarDados(int vecDados[])
@@ -216,7 +282,8 @@ int s;
 
         }
 
-        void dibValorDados(int ronda, int dados[])
+        /*void dibValorDados(int ronda, int dados[])
+
         {
             int x = 8, anteriorY, y = 8;
 
@@ -240,7 +307,9 @@ int s;
                 setColor(WHITE);
             }
 
-        }
+        }*/
+
+
 
 int puntuacionMax (int maximo){
 
