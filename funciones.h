@@ -227,3 +227,7 @@ int puntuacionMax()
 {
 
 }
+
+
+
+#endif // FUNCIONES_H_INCLUDED
