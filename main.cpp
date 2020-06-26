@@ -12,14 +12,18 @@ int main()
 {
 
 int valorFlechita; // Lo que devuelve la flecha
+
 bool jugar = true; // DECLARACION DE VARIABLES GENERALES
 char nombre1[20], nombre2[20], nombres[5][20];
 int ronda = 0, rondamax, lanzamiento = 0, puntuacion = 0, puntuacionM, puntuacionG[5];
+
 int valorDados[6]; // DECLARACION DE VARIABLE PARA LOS DADOS
 
    while(true)
     {
     system("cls");
+    borderDraw();
+    locate()
     cout << "- Un jugador\n";
     cout << "- Dos jugadores\n";
     cout << "- Puntuacion maxima\n";
@@ -163,5 +167,9 @@ int valorDados[6]; // DECLARACION DE VARIABLE PARA LOS DADOS
 
 
     }
-    
+
     }
+
+
+    return 0;
+}
