@@ -12,8 +12,10 @@ using namespace rlutil;
 
 ///------------------- DECLARACION DE FUNCIONES----------------------
 
-void borderDraw();
+void bordes(int);
 // DIBUJO DE LAS LINEAS DEL BORDE DEL PROGRAMA
+
+void menuPrincipal();
 
 void underlineDraw(int x, int y, int m);
 // SUBRAYADO DE TITULOS
@@ -22,7 +24,7 @@ void dibujoDados(int y);
 // DIBUJO DE LOS DADOS, LA Y DETERMINA LA ALTURA DE LOS DADOS
 
 
-int selectDraw(int x, int y, int y2);
+int selectDraw(int x, int y, int y2, int s); // int s = saltos
 // CON ESTO SE DIBUJA LAS FLECHAS DE LOS MENUS | x = POSICION EN X DE LAS FLECHAS, y = PRIMERA OPCION DEL MENU, y2 = ULTIMA OPCION DEL MENU
 
 void limpiarDados();
@@ -39,7 +41,32 @@ void dibujar5(int n_dado);
 
 void dibujar6(int n_dado);
 
+
 ///------------------- DESARROLLO FUNCIONES ----------------------
+
+void menuPrincipal()
+{
+    locate(6,6);
+    setColor(BLUE);
+    printf("%c", 158);
+    setColor(WHITE);
+    cout << " Un jugador";
+    locate(6,8);
+    setColor(BLUE);
+    printf("%c", 158);
+    setColor(WHITE);
+    cout << " Dos jugadores";
+    locate(6,10);
+     setColor(BLUE);
+    printf("%c", 158);
+    setColor(WHITE);
+    cout << " Puntuacion maxima";
+    locate(6,12);
+    setColor(BLUE);
+    printf("%c", 158);
+    setColor(WHITE);
+    cout << " Salir";
+}
 
 void dibujar1(int n_dado)
 {
@@ -508,9 +535,17 @@ void limpiarDados()
 /// ---------- DESARROLLO DE DIBUJOS GRALES ---------
 
 
-void borderDraw(){
+void bordes(int c){
   int y = 1, y2 = 1, x=2, x2=1;
-  rlutil::setColor(CYAN);
+
+switch(c)
+{
+case 1:
+    y = 1;
+    y2 = 1;
+    x=2;
+    x2=1;
+    rlutil::setColor(CYAN);
     printf("%c", 219);
     for(int i = 0; i<=28; i++)
     {
@@ -551,6 +586,94 @@ void borderDraw(){
         rlutil::locate(x2,30);
         printf("%c", 223);
     }
+    break;
+case 2:
+    rlutil::setColor(LIGHTBLUE);
+    printf("%c", 219);
+    for(int i = 0; i<=28; i++)
+    {
+        rlutil::locate(1,y);
+        printf("%c", 219);
+        y++;
+    }
+    rlutil::locate(1,30);
+    printf("%c", 223);
+
+    // Fin borde izq
+
+    rlutil::locate(120,1);
+    printf("%c", 219);
+    for(int i = 0; i<=28; i++)
+    {
+        y2++;
+        rlutil::locate(120,y2);
+        printf("%c", 219);
+    }
+
+    rlutil::locate(120,30);
+    printf("%c", 223);
+
+    // DIBUJO DE BORDES HORIZONTALES
+
+    rlutil::locate(2,1);
+    printf("%c", 223);
+    for(int i=2; i<119; i++)
+    {
+        x++;
+        rlutil::locate(x,1);
+        printf("%c", 223);
+    }
+    for(int i=2; i<120; i++)
+    {
+        x2++;
+        rlutil::locate(x2,30);
+        printf("%c", 223);
+    }
+    break;
+case 3:
+    rlutil::setColor(RED);
+    printf("%c", 219);
+    for(int i = 0; i<=28; i++)
+    {
+        rlutil::locate(1,y);
+        printf("%c", 219);
+        y++;
+    }
+    rlutil::locate(1,30);
+    printf("%c", 223);
+
+    // Fin borde izq
+
+    rlutil::locate(120,1);
+    printf("%c", 219);
+    for(int i = 0; i<=28; i++)
+    {
+        y2++;
+        rlutil::locate(120,y2);
+        printf("%c", 219);
+    }
+
+    rlutil::locate(120,30);
+    printf("%c", 223);
+
+    // DIBUJO DE BORDES HORIZONTALES
+
+    rlutil::locate(2,1);
+    printf("%c", 223);
+    for(int i=2; i<119; i++)
+    {
+        x++;
+        rlutil::locate(x,1);
+        printf("%c", 223);
+    }
+    for(int i=2; i<120; i++)
+    {
+        x2++;
+        rlutil::locate(x2,30);
+        printf("%c", 223);
+    }
+    break;
+}
 
     setColor(WHITE);
 
@@ -566,8 +689,8 @@ void underlineDraw(int x, int y, int m){
     rlutil::setColor(rlutil::WHITE);
 }
 
-int selectDraw(int x, int y, int y2){
-rlutil::setColor(rlutil::LIGHTBLUE);
+int selectDraw(int x, int y, int y2, int s){
+rlutil::setColor(rlutil::BLUE);
 int val_Y = y, key = 1;
 
 rlutil::locate(x, val_Y);
@@ -585,14 +708,14 @@ printf("%c", 174);
         case 80:
             rlutil::locate(x, val_Y);
             cout << " ";
-            val_Y++;
+            val_Y+=s;
             rlutil::locate(x, val_Y);
             printf("%c", 174);
             if(val_Y>y2)
             {
             rlutil::locate(x, val_Y);
             cout << " ";
-            val_Y--;
+            val_Y-=s;
             rlutil::locate(x, val_Y);
             printf("%c", 174);
             }
@@ -601,12 +724,12 @@ printf("%c", 174);
         case 72:
             rlutil::locate(x, val_Y);       /* Arregle un error de las flechas que se dibujaba otra al subir - Sergio*/
             cout << " ";
-            val_Y--;
+            val_Y-=s;
             if(val_Y<y)
             {
                 locate(x,val_Y);
                 cout << " ";
-                val_Y++;
+                val_Y+=s;
                 locate(x, val_Y);
                 printf("%c", 174);
             }
