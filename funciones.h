@@ -18,60 +18,215 @@ void tirarDados(int vecDados[], bool azar);
 
 void mostrarDados(int vecDados[]);
 
-void ingame1(char nombre[15]);
-// DESAROLLO DEL JUEGO PARA 1 JUGADOR
+/*void ingame1(char nombre[15]);
+// DESAROLLO DEL JUEGO PARA 1 JUGADOR*/
 
-void ingame2(char nombre1[15], char nombre2[15]);
+void ingame2(char nombre1[], char nombre2[]);
 // DESARROLLO DEL JUEGO PARA 2 JUGADORES
+
+void dadosPrimeraRonda(int ronda, int dados[]);
+// MUESTRA " ? ? ? " EN LOS DADOS DURANTE LA PRIMERA RONDA O RONDA 0
+
+void dosJugadores(char nombre1[], char nombre2[]);
+
+void limpiarListaNombres(char lista[10][15]);
+
 
 int unJugador(char nombreJ1[]);
 
-void dosJugadores();
 
-int puntuacionMax();
+/// -------------- DECLARACION DE FUNCIONES DE LAS JUGADAS ----------------
 
-void dibValorDados(int ronda, int dados[]);
+
+int jugadas(int vecDados[]);
+
+int juegoDeUno(int vecDados[]);
+
+int juegoDeCinco(int vecDados[]);
+
+int trioUno(int vecDados[]);
+
+int trioP(int vecDados[]);
+
+int trioPP(int vecDados[]);
+
+int trioAmpliado(int vecDados[]);
+
+int tresPares(int vecDados[]);
+
+int escaleraLarga(int vecDados[]);
+
+int sexteto(int vecDados[]);
+
+/// -------------- DESARROLLO DE LAS FUNCIONES DE LAS JUGADAS ----------------
+
+
+int jugadas(int vecDados[6])
+{
+    int puntos = 0;
+
+    puntos += tresPares(vecDados);
+
+    return puntos;
+}
+
+
+
+int tresPares(int vecdados[6])
+{
+
+int vecdadoscomp[6], analizar, contar, par = 0, puntos = 0;
+bool bandera = false;
+
+for(int i=0; i<6; i++)
+{
+    vecdadoscomp[i] = vecdados[i];
+}
+
+
+for(int i=0; i<6; i++)
+{
+
+    if(bandera == true)
+    {
+        for(int k=0; k<6; k++)
+        {
+            if(vecdadoscomp[k] == analizar)
+            {
+                vecdadoscomp[k] = 0;
+            }
+        }
+
+        bandera = false;
+    }
+
+    contar = 0;
+    analizar = vecdados[i];
+
+    for(int j=0; j<6; j++)
+    {
+        if(vecdadoscomp[j]!=0)
+        {
+            if(vecdadoscomp[j] == analizar)
+            {
+                contar++;
+            }
+        }
+    }
+    bandera = true;
+
+    if(contar == 2)
+    {
+        par++;
+    }
+    if(contar == 4)
+    {
+        par+=2;
+    }
+    if(contar == 6)
+    {
+        par+=3;
+    }
+
+}
+
+if(par == 3)
+{
+    cout << "Jugada de pares !";
+    puntos = 1000;
+}
+
+return puntos;
+
+}
+
 
 ///------------------- DESARROLLO DE FUNCIONES ----------------------
+
+void limpiarListaNombres(char lista[10][15])
+{
+    for(int i=0; i<15; i++)
+    {
+        for(int j=0; j<10; j++)
+        {
+            lista[j][i] = '\0';
+        }
+    }
+}
 
 int unJugador(char nombreJ1[])
 {
     int rondasg;
+    bordes(1);
 
     locate(50, 3);
     cout << "UN JUGADOR";
     underlineDraw(49, 4, 9);
 
-    locate(46,9);
-    cout << "--------------";
-
-    locate(46,6);
-    cout << "Ingresa tu nombre\n";
+    locate(27,8);
+    cout << "Ingresa tu nombre:";
     locate(46,8);
     cin.getline(nombreJ1, 15);
 
-    locate(46,12);
-    cout << "Ingresar la cantidad de rondas ganadoras: ";
+    locate(27,10);
+    cout << "Ingresa la cantidad";
+    locate(27, 11);
+    cout << "de rondas ganadoras:  ";
     cin >> rondasg;
 
+    cin.ignore();
+
     system("cls");
-    borderDraw();
 
 return rondasg;
+}
+
+void dosJugadores(char nombre1[], char nombre2[])
+{
+    bordes(1);
+    locate(50, 3);
+    cout << "DOS JUGADORES";
+    underlineDraw(49, 4, 12);
+
+
+    locate(27,8);
+    cout << "Nombre del jugador 1:";
+    locate(49,8);
+    cin.getline(nombre1, 15);
+
+
+    bordes(3);
+
+    locate(27,10);
+    cout << "Nombre del jugador 2:";
+    locate(49,10);
+    cin.getline(nombre2, 15);
+
 
 }
 
-void ingame1(char nombre[15])
+/*void ingame1(char nombre[15])
 {
-    int ronda = 0, lanzamiento = 0, puntuacion = 0, jugar = true, valorFlechita; // DECLARACION DE VARIABLES GENERALES
-    int valorDados[6]; // DECLARACION DE VARIABLE PARA LOS DADOS
+char nombre1[20], nombre2[20], nombres[5][20];
+int ronda = 0, rondamax, lanzamiento, puntuacion, puntuacionM, puntuacionG[5], valorFlechita;
+bool jugar = true;
+int valorDados[6]; // DECLARACION DE VARIABLE PARA LOS DADOS
+
+
+    puntuacion = 0;
+    // ----------
+    ronda = 0;
+    // ----------
+    lanzamiento = 0;
+    // ----------
+
 
     underlineDraw(2, 3, 115);
 
     locate(3, 2);
     cout << "TURNO DE: ";
     setColor(GREEN);
-    cout << nombre;
+    cout << nombre1;
     setColor(WHITE);
     locate(26, 2);
     cout << "|\tRONDA N: ";
@@ -94,9 +249,22 @@ void ingame1(char nombre[15])
     locate(6, 20);
     cout << "Lanzar dados";
 
+
     while(jugar)
     {
+        for(int i=1; i<=rondamax; i++)
+        {
+
         dibValorDados(ronda, valorDados);
+
+            locate(42, 2);
+            setColor(GREEN);
+            cout << ronda;
+            locate(72, 2);
+            cout << lanzamiento;
+            locate(100, 2);
+            cout << puntuacion;
+            setColor(WHITE);
 
         valorFlechita = selectDraw(20, 20, 21);
 
@@ -108,17 +276,10 @@ void ingame1(char nombre[15])
             ronda++;
             lanzamiento++;
 
-            locate(42, 2);
-            setColor(GREEN);
-            cout << ronda;
-            locate(72, 2);
-            cout << lanzamiento;
-            setColor(WHITE);
-
-
             limpiarDados();
 
-            tirarDados(valorDados, 1);
+            tirarDados(valorDados, 1); /// INGRESAR DADOS MANUALMENTE PARA TESTEAR 0, DADOS AL AZAR 1
+
             for(int i=0; i<6; i++)
             {
                 switch(valorDados[i])
@@ -146,32 +307,35 @@ void ingame1(char nombre[15])
 
                     locate(6,23);
                     cout << "(Valores del vector de dados): ";
-                    locate(6, 25);
-
+                    locate(6, 24);
                     mostrarDados(valorDados);
 
-                    getch();
+                    locate(24, 20);
+
+                    puntuacion += jugadapares(valorDados);
+
 
                     break;
                 }
+
             }
 
-        }
-
-
+    }
+}
+*/
 /// --------- DESARROLLO DADOS ---------------------
 
         void mostrarDados(int vecDados[])
         {
             for(int i=0; i<6; i++)
             {
-                cout << vecDados[i] <<"\t";
+                cout << vecDados[i] <<" ";
             }
         }
 
         void tirarDados(int vecDados[], bool azar)
         {
-
+            int x = 6;
             if(azar==1)
             {
 
@@ -186,17 +350,20 @@ void ingame1(char nombre[15])
             }
             else
             {
+                locate(6, 26);
                 cout << "Ingrese los valores de los dados\n";
                 for(int i=0; i<6; i++)
                 {
+                    locate(x, 27);
                     cin >> vecDados[i];
+                    x+=2;
                 }
 
             }
 
         }
 
-        void dibValorDados(int ronda, int dados[])
+        void  dadosPrimeraRonda(int ronda, int dados[])
         {
             int x = 8, anteriorY, y = 8;
 
@@ -221,12 +388,6 @@ void ingame1(char nombre[15])
             }
 
         }
-
-
-int puntuacionMax()
-{
-
-}
 
 
 
