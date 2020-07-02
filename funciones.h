@@ -12,17 +12,10 @@ using namespace rlutil;
 
 ///------------------- DECLARACION DE FUNCIONES----------------------
 
-
-void tirarDados(int vecDados[], bool azar);
+void tirarDados(int vecDados[], int juegos[], bool azar);
 // FUNCION GENERAL PARA TIRAR DADOS, C = CANTIDAD DE DADOS, BOOL 1 = DADOS AL AZAR, BOOL 0 = DADOS MANUALMENTE
 
 void mostrarDados(int vecDados[]);
-
-/*void ingame1(char nombre[15]);
-// DESAROLLO DEL JUEGO PARA 1 JUGADOR*/
-
-void ingame2(char nombre1[], char nombre2[]);
-// DESARROLLO DEL JUEGO PARA 2 JUGADORES
 
 void dadosPrimeraRonda(int ronda, int dados[]);
 // MUESTRA " ? ? ? " EN LOS DADOS DURANTE LA PRIMERA RONDA O RONDA 0
@@ -31,117 +24,680 @@ void dosJugadores(char nombre1[], char nombre2[]);
 
 void limpiarListaNombres(char lista[10][15]);
 
-
 int unJugador(char nombreJ1[]);
 
 
 /// -------------- DECLARACION DE FUNCIONES DE LAS JUGADAS ----------------
 
+int jugadas(int juegos[]);
 
-int jugadas(int vecDados[]);
+void tresPares(int vecDados[], int juegos[]);
 
-int juegoDeUno(int vecDados[]);
+void selectivo(int vecDados[], int juegos[]);
 
-int juegoDeCinco(int vecDados[]);
+void juegoD5(int vecDados[], int juegos[]);
 
-int trioUno(int vecDados[]);
+void escalera(int vecDados[], int juegos[]);
 
-int trioP(int vecDados[]);
-
-int trioPP(int vecDados[]);
-
-int trioAmpliado(int vecDados[]);
-
-int tresPares(int vecDados[]);
-
-int escaleraLarga(int vecDados[]);
-
-int sexteto(int vecDados[]);
+void juegoD1(int vecDados[], int juegos[]);
 
 /// -------------- DESARROLLO DE LAS FUNCIONES DE LAS JUGADAS ----------------
 
 
-int jugadas(int vecDados[6])
+int jugadas(int juegos[])
 {
-    int puntos = 0;
+    int puntoss = 0;
 
-    puntos += tresPares(vecDados);
+    int  tot;
 
-    return puntos;
-}
-
-
-
-int tresPares(int vecdados[6])
-{
-
-int vecdadoscomp[6], analizar, contar, par = 0, puntos = 0;
-bool bandera = false;
-
-for(int i=0; i<6; i++)
-{
-    vecdadoscomp[i] = vecdados[i];
-}
-
-
-for(int i=0; i<6; i++)
-{
-
-    if(bandera == true)
+    for(int forx=0; forx<19; forx++)
     {
-        for(int k=0; k<6; k++)
-        {
-            if(vecdadoscomp[k] == analizar)
-            {
-                vecdadoscomp[k] = 0;
-            }
-        }
+        if(juegos[forx]==1){
 
-        bandera = false;
+        switch(forx)
+        {
+
+        case 0:
+
+            gotoxy(45,23);
+            cout<<"Escalera"<<endl;
+            /*gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+                puntoss+=1500;
+
+            }
+            cin.ignore();*/
+            break;
+
+        case 1:
+
+            gotoxy(45,23);
+            cout<<"Tres Pares"<<endl;
+            /*gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+
+                puntoss+=1000;
+
+            }
+            cin.ignore();*/
+            break;
+
+        case 2:
+
+            gotoxy(45,23);
+            cout<<"Trio de 2++"<<endl;
+           /* gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+                tot=2*200;
+                puntoss+=tot;
+
+            }*/
+            cin.ignore();
+            break;
+
+        case 3:
+
+            gotoxy(45,23);
+            cout<<"Trio de 2"<<endl;
+           /* gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+           cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+                tot=2*100;
+                puntoss+=tot;
+
+            }
+            cin.ignore();*/
+            break;
+
+        case 4:
+
+            gotoxy(45,23);
+            cout<<"Trio de 3++"<<endl;
+            /*gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+                tot=3*200;
+                puntoss+=tot;
+
+            }
+            cin.ignore();*/
+            break;
+        case 5:
+
+            gotoxy(45,23);
+            cout<<"Trio de 3"<<endl;
+            /*gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+                puntoss+=300;
+
+            }
+            cin.ignore();*/
+            break;
+
+        case 6:
+
+            gotoxy(45,23);
+            cout<<"Trio de 4++"<<endl;
+           /* gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+
+                puntoss+=800;
+
+            }
+            cin.ignore();*/
+            break;
+
+        case 7:
+
+            gotoxy(45,23);
+            cout<<"Trio de 4"<<endl;
+           /* gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+
+                puntoss+=400;
+
+            }
+            cin.ignore();*/
+            break;
+
+        case 8:
+
+            gotoxy(45,23);
+            cout<<"Trio de 6++"<<endl;
+            /*gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+
+                puntoss+=1200;
+
+            }
+            cin.ignore();*/
+            break;
+        case 9:
+
+            gotoxy(45,23);
+            cout<<"Trio de 6"<<endl;
+            /*gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+
+                puntoss+=600;
+
+            }
+            cin.ignore();*/
+            break;
+
+        case 10:
+
+            gotoxy(45,23);
+            cout<<"Juego de 5"<<endl;
+            /*gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+
+                puntoss+=50;
+
+            }
+            cin.ignore();*/
+            break;
+
+        case 11:
+
+            gotoxy(45,23);
+            cout<<"Juego de 5"<<endl;
+            /*gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+
+                puntoss+=100;
+
+            }
+            cin.ignore();*/
+            break;
+
+        case 12:
+
+            gotoxy(45,23);
+            cout<<"Trio de 5"<<endl;
+           /* gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+
+                puntoss+=500;
+
+            }
+            cin.ignore();*/
+            break;
+        case 13:
+
+            gotoxy(45,23);
+            cout<<"Trio de 5++"<<endl;
+            /*gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+
+                puntoss+=1000;
+
+            }
+            cin.ignore();*/
+            break;
+
+        case 14:
+
+            gotoxy(45,23);
+            cout<<"Juego de 1"<<endl;
+            puntoss+= 100;
+           /* gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+
+                puntoss+=100;
+
+            }
+            cin.ignore();*/
+            break;
+
+        case 15:
+
+            gotoxy(45,23);
+            cout<<"Juego de 1"<<endl;
+           /* gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+
+                puntoss+=200;
+
+            }
+            cin.ignore();*/
+            break;
+
+        case 16:
+
+            gotoxy(45,23);
+            cout<<"Trio de 1"<<endl;
+            /*gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+
+                puntoss+=1000;
+
+            }
+            cin.ignore();*/
+            break;
+
+        case 17:
+            gotoxy(45,23);
+            cout<<"Trio 1 ampliado"<<endl;
+           /* gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+
+                puntoss+=2000;
+
+            }
+            cin.ignore();*/
+            break;
+
+        case 18:
+
+            gotoxy(45,23);
+            cout<<"Sexteto"<<endl;
+           /*gotoxy(45,25);
+            cout<<"¿Desea sumar?"<<endl;
+            gotoxy(67,25);
+            cin.getline (ing,2);
+            if(ing[0] == 's' && ing[1] == 'i')
+            {
+
+
+                puntoss=10000;
+
+            }
+            cin.ignore();*/
+            break;
+        }///switch
+
+        }///if
+
+    }///for
+    return puntoss;
+
+
+}
+///------------------- DESARROLLO DE FUNCIONES ----------------------
+
+void escalera(int vecDados[6], int juegos[])
+{
+
+
+    int n = vecDados[0], vueltas = 0;
+    bool escalera1 = true, escalera2 = true;
+
+    for(int x=1; x<=5; x++)
+    {
+      if(escalera1)
+      {
+          if(vecDados[x]>n)
+          {
+            n = vecDados[x];
+          }
+          else{
+            escalera1 = false;
+          }
+      }
     }
 
-    contar = 0;
-    analizar = vecdados[i];
+    n = vecDados[0];
+
+    for(int x=1; x<=5; x++)
+    {
+      if(escalera2)
+      {
+          if(vecDados[x]<n)
+          {
+            n = vecDados[x];
+          }
+          else{
+            escalera2 = false;
+          }
+      }
+    }
+
+  if(escalera1)
+  {
+        juegos[0]=1;///0
+  }
+  else{
+    if(escalera2){
+          juegos[0]=1;///0
+    }
+  }
+
+
+
+
+}
+
+void tresPares(int vecdados[6], int juegos[])///
+{
+
+    int vecdadoscomp[6], analizar, contar, par = 0, puntos = 0;
+    bool bandera = false;
+
+    for(int i=0; i<6; i++)
+    {
+        vecdadoscomp[i] = vecdados[i];
+    }
+
+
+    for(int i=0; i<6; i++)
+    {
+
+        if(bandera == true)
+        {
+            for(int k=0; k<6; k++)
+            {
+                if(vecdadoscomp[k] == analizar)
+                {
+                    vecdadoscomp[k] = 0;
+                }
+            }
+
+            bandera = false;
+        }
+
+        contar = 0;
+        analizar = vecdados[i];
+
+        for(int j=0; j<6; j++)
+        {
+            if(vecdadoscomp[j]!=0)
+            {
+                if(vecdadoscomp[j] == analizar)
+                {
+                    contar++;
+                }
+            }
+        }
+        bandera = true;
+
+        if(contar == 2)
+        {
+            par++;
+        }
+        if(contar == 4)
+        {
+            par+=2;
+        }
+        if(contar == 6)
+        {
+            par+=3;
+        }
+
+    }
+
+    if(par == 3)
+    {
+
+        juegos[1]=1;
+    }
+
+
+
+}
+
+void selectivo(int vecDados[6], int juegos[])///YATA
+{
+
+    int sumar2=0, sumar4=0, sumar3=0, sumar6=0;
+    for(int a=0; a<6; a++)
+    {
+
+        switch(vecDados[a])
+        {
+        case 2:
+
+            sumar2++;
+
+            break;
+        case 3:
+
+            sumar3++;
+
+            break;
+        case 4:
+
+            sumar4++;
+
+            break;
+        case 6:
+
+            sumar6++;
+
+            break;
+
+        }
+
+    }///for
+
+    switch(sumar2)
+    {
+
+
+    case 4:
+    case 5:
+
+        juegos[2]=1;
+
+        break;
+
+
+    case 3:
+
+        juegos[3]=1;
+
+    }///switch 2
+
+    switch(sumar3)
+    {
+
+        case 4:
+        case 5:
+
+        juegos[4]=1;
+        break;
+
+        case 3:
+        juegos[5]=1;
+
+    }///switch 3
+
+    switch(sumar4)
+    {
+
+        case 4:
+        case 5:
+
+        juegos[6]=1;
+
+        break;
+
+    case 3:
+
+        juegos[7]=1;
+
+    }///switch 4
+
+
+    switch(sumar6)
+    {
+
+        case 4:
+        case 5:
+
+        juegos[8]=1;
+
+        break;
+
+    case 3:
+
+        juegos[9]=1;
+
+    }///switch 6
+}
+
+void juegoD5(int vecDados[6], int juegos[])///
+{
+
+    int numeros=0;
 
     for(int j=0; j<6; j++)
     {
-        if(vecdadoscomp[j]!=0)
+
+        if(vecDados[j] == 5 )
         {
-            if(vecdadoscomp[j] == analizar)
-            {
-                contar++;
-            }
-        }
-    }
-    bandera = true;
+            numeros++;
+        }//llaves del if
 
-    if(contar == 2)
+    } // fin del for
+    switch(numeros)
     {
-        par++;
+
+    case 1:
+        juegos[10]=1;
+        break;
+    case 2:
+        juegos[11]=1;
+        break;
+    case 3:
+        juegos[12]=1;
+        break;
+
+        case 4:
+        case 5:
+        juegos[13]=1;
+
+
     }
-    if(contar == 4)
-    {
-        par+=2;
-    }
-    if(contar == 6)
-    {
-        par+=3;
-    }
+
+
 
 }
 
-if(par == 3)
+void juegoD1(int vecDados[6], int juegos[19])
 {
-    cout << "Jugada de pares !";
-    puntos = 1000;
+
+    int valores = 0;
+
+    for(int j=0; j<6; j++)
+    {
+
+        if(vecDados[j] == 1)
+        {
+            valores++;
+        }//llaves del if
+
+    } // fin del for
+
+    switch(valores)
+    {
+    case 1:
+        juegos[14]=1;
+        break;
+    case 2:
+        juegos[15]=1;
+        break;
+    case 3:
+        juegos[16]=1;
+        break;
+    case 4:
+    case 5:
+        juegos[17]=1;
+        break;
+    case 6:
+        juegos[18]=1;
+    }
+
+
+
 }
-
-return puntos;
-
-}
-
-
-///------------------- DESARROLLO DE FUNCIONES ----------------------
 
 void limpiarListaNombres(char lista[10][15])
 {
@@ -178,7 +734,7 @@ int unJugador(char nombreJ1[])
 
     system("cls");
 
-return rondasg;
+    return rondasg;
 }
 
 void dosJugadores(char nombre1[], char nombre2[])
@@ -202,192 +758,88 @@ void dosJugadores(char nombre1[], char nombre2[])
     locate(49,10);
     cin.getline(nombre2, 15);
 
+    system("cls");
 
 }
 
-/*void ingame1(char nombre[15])
-{
-char nombre1[20], nombre2[20], nombres[5][20];
-int ronda = 0, rondamax, lanzamiento, puntuacion, puntuacionM, puntuacionG[5], valorFlechita;
-bool jugar = true;
-int valorDados[6]; // DECLARACION DE VARIABLE PARA LOS DADOS
 
 
-    puntuacion = 0;
-    // ----------
-    ronda = 0;
-    // ----------
-    lanzamiento = 0;
-    // ----------
 
-
-    underlineDraw(2, 3, 115);
-
-    locate(3, 2);
-    cout << "TURNO DE: ";
-    setColor(GREEN);
-    cout << nombre1;
-    setColor(WHITE);
-    locate(26, 2);
-    cout << "|\tRONDA N: ";
-    setColor(GREEN);
-    cout << ronda;
-    setColor(WHITE);
-    locate(49, 2);
-    cout << "|\tLANZAMIENTO N: ";
-    setColor(GREEN);
-    cout << lanzamiento;
-    setColor(WHITE);
-    locate(77, 2);
-    cout << "|\tPUNTUACION ACTUAL: ";
-    setColor(GREEN);
-    cout << puntuacion;
-    setColor(WHITE);
-
-    dibujoDados(4);
-
-    locate(6, 20);
-    cout << "Lanzar dados";
-
-
-    while(jugar)
-    {
-        for(int i=1; i<=rondamax; i++)
-        {
-
-        dibValorDados(ronda, valorDados);
-
-            locate(42, 2);
-            setColor(GREEN);
-            cout << ronda;
-            locate(72, 2);
-            cout << lanzamiento;
-            locate(100, 2);
-            cout << puntuacion;
-            setColor(WHITE);
-
-        valorFlechita = selectDraw(20, 20, 21);
-
-        switch(valorFlechita)
-        {
-
-        case 20:
-
-            ronda++;
-            lanzamiento++;
-
-            limpiarDados();
-
-            tirarDados(valorDados, 1); /// INGRESAR DADOS MANUALMENTE PARA TESTEAR 0, DADOS AL AZAR 1
-
-            for(int i=0; i<6; i++)
-            {
-                switch(valorDados[i])
-                {
-                case 1:
-                    dibujar1(i);
-                    break;
-                case 2:
-                    dibujar2(i);
-                    break;
-                case 3:
-                    dibujar3(i);
-                    break;
-                case 4:
-                    dibujar4(i);
-                    break;
-                case 5:
-                    dibujar5(i);
-                    break;
-                case 6:
-                    dibujar6(i);
-                    break;
-                }
-            }
-
-                    locate(6,23);
-                    cout << "(Valores del vector de dados): ";
-                    locate(6, 24);
-                    mostrarDados(valorDados);
-
-                    locate(24, 20);
-
-                    puntuacion += jugadapares(valorDados);
-
-
-                    break;
-                }
-
-            }
-
-    }
-}
-*/
 /// --------- DESARROLLO DADOS ---------------------
 
-        void mostrarDados(int vecDados[])
+void mostrarDados(int vecDados[])
+{
+    for(int i=0; i<6; i++)
+    {
+        cout << vecDados[i] <<" ";
+    }
+}
+
+void tirarDados(int vecDados[], int juegos[], bool azar)
+{
+
+    int x = 6;
+
+    if(azar==1)
+    {
+
+        srand(time(NULL));
+        int n;
+        for(int i=0; i<6; i++)
         {
-            for(int i=0; i<6; i++)
-            {
-                cout << vecDados[i] <<" ";
-            }
+            n = rand()%6+1;
+            vecDados[i] = n;
         }
 
-        void tirarDados(int vecDados[], bool azar)
+    }
+    else
+    {
+        locate(6, 26);
+        cout << "Ingrese los valores de los dados\n";
+        for(int i=0; i<6; i++)
         {
-            int x = 6;
-            if(azar==1)
-            {
-
-                srand(time(NULL));
-                int n;
-                for(int i=0; i<6; i++)
-                {
-                    n = rand()%6+1;
-                    vecDados[i] = n;
-                }
-
-            }
-            else
-            {
-                locate(6, 26);
-                cout << "Ingrese los valores de los dados\n";
-                for(int i=0; i<6; i++)
-                {
-                    locate(x, 27);
-                    cin >> vecDados[i];
-                    x+=2;
-                }
-
-            }
-
+            locate(x, 27);
+            cin >> vecDados[i];
+            x+=2;
         }
 
-        void  dadosPrimeraRonda(int ronda, int dados[])
+    }
+
+}
+
+void  dadosPrimeraRonda(int ronda, int dados[])
+{
+    int x = 8, anteriorY, y = 8;
+
+    anteriorY = y;
+
+    if(ronda == 0)
+    {
+        setColor(LIGHTRED);
+        for(int j=1; j<=6; j++)
         {
-            int x = 8, anteriorY, y = 8;
-
-            anteriorY = y;
-
-            if(ronda == 0)
+            for(int i=1; i<=3; i++)
             {
-                setColor(LIGHTRED);
-                for(int j=1; j<=6; j++)
-                {
-                    for(int i=1; i<=3; i++)
-                    {
-                        locate(x, y);
-                        cout << "???????";
-                        y++;
-                    }
-
-                    y = anteriorY;
-                    x += 15;
-                }
-                setColor(WHITE);
+                locate(x, y);
+                cout << "???????";
+                y++;
             }
 
+            y = anteriorY;
+            x += 15;
         }
+        setColor(WHITE);
+    }
+
+}
+
+void ponerEnCero(int vec[19])
+{
+    for(int i=0; i<19; i++)
+    {
+        vec[i] = 0;
+    }
+}
 
 
 
