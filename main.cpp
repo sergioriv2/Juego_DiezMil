@@ -14,8 +14,10 @@ int main()
     int valorFlechita; // Lo que devuelve la flecha
     int puntuacion, puntuacion2, puntoss=0, ronda2, lanzamiento, ronda, rondamax, Val = 0;
     char listanombres[10][15], nombre1[15], nombre2[15];
-    int  puntajes[10] = {0}, juegos[19], ValorY = 5;
+    int  puntajes[10], juegos[19], ValorY = 5, indice = 0;
     bool jugar;
+
+    ponerEnCero(puntajes, 10);
 
     limpiarListaNombres(listanombres);
 
@@ -55,6 +57,7 @@ int main()
 
 
             underlineDraw(2, 3, 115);
+            underlineDraw(2, 19, 115);
 
             locate(3, 2);
             cout << "TURNO DE: ";
@@ -82,15 +85,13 @@ int main()
             locate(6, 20);
             cout << "Lanzar dados";
 
-
             while(jugar)
             {
                 for(int i=0; i<=rondamax; i++)
                 {
 
-                    ponerEnCero(juegos);
-
                     dadosPrimeraRonda(ronda, valorDados);
+
                     locate(42, 2);
                     setColor(GREEN);
                     cout << ronda;
@@ -100,7 +101,7 @@ int main()
                     cout << puntuacion;
                     setColor(WHITE);
 
-                    valorFlechita = selectDraw(20, 20, 21, 1);
+                    valorFlechita = selectDraw2();
 
                     switch(valorFlechita)
                     {
@@ -111,13 +112,14 @@ int main()
                         lanzamiento++;
 
                         limpiarDados();
+                        ponerEnCero(juegos, 19);
 
-                    gotoxy(45, 23);
-                    cout << "                ";
-                    gotoxy(45, 24);
-                    cout << "                ";
-                    gotoxy(45, 25);
-                    cout << "                ";
+                        gotoxy(42, 23);
+                        cout << "                                       ";
+                        gotoxy(42, 24);
+                        cout << "                                       ";
+                        gotoxy(42, 25);
+                        cout << "                                       ";
 
                         tirarDados(valorDados, juegos, 1); /// INGRESAR DADOS MANUALMENTE PARA TESTEAR 0, DADOS AL AZAR 1///le agregue puntuacion
 
@@ -146,12 +148,12 @@ int main()
                             }
                         }
 
-                        locate(6,23);
-                        cout << "(Valores del vector de dados): ";
-                        locate(6, 24);
-                        mostrarDados(valorDados);
+                        /* locate(6,23);
+                         cout << "(Valores del vector de dados): ";
+                         locate(6, 24);
+                         mostrarDados(valorDados);
 
-                        locate(24, 20);
+                         locate(24, 20);*/
 
 
                         juegoD1     (valorDados, juegos);
@@ -160,8 +162,34 @@ int main()
                         tresPares   (valorDados, juegos);
                         escalera    (valorDados, juegos);
 
-                        puntuacion += jugadas(juegos);
-
+                        jugadas(juegos);
+                        break;
+                    case 23:
+                        indice = buscaruno(juegos, 1);
+                        puntuacion += sumarPuntos(indice);
+                        i--;
+                        locate(42, 23);
+                        setColor(YELLOW);
+                        cout << "X";
+                        setColor(WHITE);
+                        break;
+                    case 24:
+                        indice = buscaruno(juegos, 2);
+                        puntuacion += sumarPuntos(indice);
+                        i--;
+                        locate(42, 24);
+                        setColor(YELLOW);
+                        cout << "X";
+                        setColor(WHITE);
+                        break;
+                    case 25:
+                        indice = buscaruno(juegos, 3);
+                        puntuacion += sumarPuntos(indice);
+                        i--;
+                        locate(42, 25);
+                        setColor(YELLOW);
+                        cout << "X";
+                        setColor(WHITE);
                         break;
                     }
 
@@ -171,6 +199,28 @@ int main()
                 jugar = false;
             }
 
+            system("cls");
+
+            bordes(1);
+            locate(30, 10);
+            cout << "Jugador: ";
+            cout << nombre1;
+            locate(55, 10);
+            cout << "Puntos: ";
+            cout << puntuacion;
+            if(puntuacion<10000)
+            {
+                locate(30, 12);
+                setColor(RED);
+                cout << "Perdiste";
+            }
+            else{
+                locate(30, 12);
+                setColor(LIGHTGREEN);
+                cout << "Ganaste!!!";
+            }
+            setColor(WHITE);
+            anykey();
             ///----------------------------------
             // PUNTUACION FINAL
             strcpy(listanombres[Val], nombre1);
@@ -179,7 +229,7 @@ int main()
 
             break;
         case 8:           // OPCION DE DOS JUGADORES
-            system("cls");
+            /*system("cls");
 
             bordes(1);   // SE DIBUJAN LOS BORDES DE PANTALLA
 
@@ -198,7 +248,7 @@ int main()
 
             underlineDraw(2, 3, 115);
 
-            while( puntuacion2 != 10000 || puntuacion != 10000 || ronda!=10)
+            while()
             {
 
                locate(3, 2);
