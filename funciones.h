@@ -662,6 +662,7 @@ int unJugador(char nombreJ1[])
 
     system("cls");
 
+
     return rondasg;
 }
 
@@ -687,6 +688,8 @@ void dosJugadores(char nombre1[], char nombre2[])
     cin.getline(nombre2, 15);
 
     system("cls");
+
+    bordes(1);
 
 }
 
