@@ -29,7 +29,7 @@ int unJugador(char nombreJ1[]);
 
 /// -------------- DECLARACION DE FUNCIONES DE LAS JUGADAS ----------------
 
-int jugadas(int juegos[]);
+int jugadas(int juegos[19]);
 
 void tresPares(int vecDados[], int juegos[]);
 
@@ -44,355 +44,171 @@ void juegoD1(int vecDados[], int juegos[]);
 /// -------------- DESARROLLO DE LAS FUNCIONES DE LAS JUGADAS ----------------
 
 
-int jugadas(int juegos[])
+int jugadas(int juegos[19])
 {
-    int puntoss = 0;
+    int puntoss = 0, vueltas = 23;
 
     int  tot;
 
     for(int forx=0; forx<19; forx++)
     {
-        if(juegos[forx]==1){
 
-        switch(forx)
+        if(juegos[forx]==1)
         {
-
-        case 0:
-
-            gotoxy(45,23);
-            cout<<"Escalera"<<endl;
-            /*gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
+            switch(forx)
             {
 
-                puntoss+=1500;
-
-            }
-            cin.ignore();*/
-            break;
-
-        case 1:
-
-            gotoxy(45,23);
-            cout<<"Tres Pares"<<endl;
-            /*gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-
-                puntoss+=1000;
-
-            }
-            cin.ignore();*/
-            break;
-
-        case 2:
-
-            gotoxy(45,23);
-            cout<<"Trio de 2++"<<endl;
-           /* gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-                tot=2*200;
-                puntoss+=tot;
-
-            }*/
-            cin.ignore();
-            break;
-
-        case 3:
-
-            gotoxy(45,23);
-            cout<<"Trio de 2"<<endl;
-           /* gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-           cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-                tot=2*100;
-                puntoss+=tot;
-
-            }
-            cin.ignore();*/
-            break;
-
-        case 4:
-
-            gotoxy(45,23);
-            cout<<"Trio de 3++"<<endl;
-            /*gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-                tot=3*200;
-                puntoss+=tot;
-
-            }
-            cin.ignore();*/
-            break;
-        case 5:
-
-            gotoxy(45,23);
-            cout<<"Trio de 3"<<endl;
-            /*gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-                puntoss+=300;
-
-            }
-            cin.ignore();*/
-            break;
-
-        case 6:
-
-            gotoxy(45,23);
-            cout<<"Trio de 4++"<<endl;
-           /* gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-
-                puntoss+=800;
-
-            }
-            cin.ignore();*/
-            break;
-
-        case 7:
-
-            gotoxy(45,23);
-            cout<<"Trio de 4"<<endl;
-           /* gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-
-                puntoss+=400;
-
-            }
-            cin.ignore();*/
-            break;
-
-        case 8:
-
-            gotoxy(45,23);
-            cout<<"Trio de 6++"<<endl;
-            /*gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-
-                puntoss+=1200;
-
-            }
-            cin.ignore();*/
-            break;
-        case 9:
-
-            gotoxy(45,23);
-            cout<<"Trio de 6"<<endl;
-            /*gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-
-                puntoss+=600;
-
-            }
-            cin.ignore();*/
-            break;
-
-        case 10:
-
-            gotoxy(45,23);
-            cout<<"Juego de 5"<<endl;
-            /*gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-
-                puntoss+=50;
-
-            }
-            cin.ignore();*/
-            break;
-
-        case 11:
-
-            gotoxy(45,23);
-            cout<<"Juego de 5"<<endl;
-            /*gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-
-                puntoss+=100;
-
-            }
-            cin.ignore();*/
-            break;
-
-        case 12:
-
-            gotoxy(45,23);
-            cout<<"Trio de 5"<<endl;
-           /* gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-
-                puntoss+=500;
-
-            }
-            cin.ignore();*/
-            break;
-        case 13:
-
-            gotoxy(45,23);
-            cout<<"Trio de 5++"<<endl;
-            /*gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-
-                puntoss+=1000;
-
-            }
-            cin.ignore();*/
-            break;
-
-        case 14:
-
-            gotoxy(45,23);
-            cout<<"Juego de 1"<<endl;
-            puntoss+= 100;
-           /* gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-
-                puntoss+=100;
-
-            }
-            cin.ignore();*/
-            break;
-
-        case 15:
-
-            gotoxy(45,23);
-            cout<<"Juego de 1"<<endl;
-           /* gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-
-                puntoss+=200;
-
-            }
-            cin.ignore();*/
-            break;
-
-        case 16:
-
-            gotoxy(45,23);
-            cout<<"Trio de 1"<<endl;
-            /*gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-
-                puntoss+=1000;
-
-            }
-            cin.ignore();*/
-            break;
-
-        case 17:
-            gotoxy(45,23);
-            cout<<"Trio 1 ampliado"<<endl;
-           /* gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-
-                puntoss+=2000;
-
-            }
-            cin.ignore();*/
-            break;
-
-        case 18:
-
-            gotoxy(45,23);
-            cout<<"Sexteto"<<endl;
-           /*gotoxy(45,25);
-            cout<<"¿Desea sumar?"<<endl;
-            gotoxy(67,25);
-            cin.getline (ing,2);
-            if(ing[0] == 's' && ing[1] == 'i')
-            {
-
-
-                puntoss=10000;
-
-            }
-            cin.ignore();*/
-            break;
-        }///switch
+            case 0:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Escalera"<<endl;
+                vueltas++;
+                break;
+
+            case 1:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Tres Pares"<<endl;
+                vueltas++;
+                break;
+
+            case 2:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Trio de 2++"<<endl;
+                vueltas++;
+                break;
+
+            case 3:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Trio de 2"<<endl;
+                vueltas++;
+                break;
+
+            case 4:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Trio de 3++"<<endl;
+                vueltas++;
+                break;
+            case 5:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Trio de 3"<<endl;
+                vueltas++;
+                break;
+
+            case 6:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Trio de 4++"<<endl;
+                vueltas++;
+                break;
+
+            case 7:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Trio de 4"<<endl;
+                vueltas++;
+                break;
+
+            case 8:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Trio de 6++"<<endl;
+                vueltas++;
+                break;
+            case 9:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Trio de 6"<<endl;
+                vueltas++;
+                break;
+
+            case 10:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Juego de 5"<<endl;
+                vueltas++;
+                break;
+
+            case 11:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Juego de 5"<<endl;
+                vueltas++;
+                break;
+
+            case 12:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Trio de 5"<<endl;
+                vueltas++;
+                break;
+            case 13:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Trio de 5++"<<endl;
+                vueltas++;
+                break;
+
+            case 14:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Juego de 1"<<endl;
+                puntoss+= 100;
+                vueltas++;
+                break;
+
+            case 15:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Juego de 1"<<endl;
+                vueltas++;
+                break;
+
+            case 16:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Trio de 1"<<endl;
+                vueltas++;
+                break;
+
+            case 17:
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Trio 1 ampliado"<<endl;
+                vueltas++;
+                break;
+
+            case 18:
+
+                gotoxy(45,vueltas);
+                cout<<"                   "<<endl;
+                gotoxy(45,vueltas);
+                cout<<"Sexteto"<<endl;
+                vueltas++;
+                break;
+            }///switch
 
         }///if
 
@@ -407,48 +223,52 @@ void escalera(int vecDados[6], int juegos[])
 {
 
 
-    int n = vecDados[0], vueltas = 0;
+    int n = vecDados[0];
     bool escalera1 = true, escalera2 = true;
 
     for(int x=1; x<=5; x++)
     {
-      if(escalera1)
-      {
-          if(vecDados[x]>n)
-          {
-            n = vecDados[x];
-          }
-          else{
-            escalera1 = false;
-          }
-      }
+        if(escalera1)
+        {
+            if(vecDados[x]>n)
+            {
+                n = vecDados[x];
+            }
+            else
+            {
+                escalera1 = false;
+            }
+        }
     }
 
     n = vecDados[0];
 
     for(int x=1; x<=5; x++)
     {
-      if(escalera2)
-      {
-          if(vecDados[x]<n)
-          {
-            n = vecDados[x];
-          }
-          else{
-            escalera2 = false;
-          }
-      }
+        if(escalera2)
+        {
+            if(vecDados[x]<n)
+            {
+                n = vecDados[x];
+            }
+            else
+            {
+                escalera2 = false;
+            }
+        }
     }
 
-  if(escalera1)
-  {
+    if(escalera1)
+    {
         juegos[0]=1;///0
-  }
-  else{
-    if(escalera2){
-          juegos[0]=1;///0
     }
-  }
+    else
+    {
+        if(escalera2)
+        {
+            juegos[0]=1;///0
+        }
+    }
 
 
 
@@ -578,13 +398,13 @@ void selectivo(int vecDados[6], int juegos[])///YATA
     switch(sumar3)
     {
 
-        case 4:
-        case 5:
+    case 4:
+    case 5:
 
         juegos[4]=1;
         break;
 
-        case 3:
+    case 3:
         juegos[5]=1;
 
     }///switch 3
@@ -592,8 +412,8 @@ void selectivo(int vecDados[6], int juegos[])///YATA
     switch(sumar4)
     {
 
-        case 4:
-        case 5:
+    case 4:
+    case 5:
 
         juegos[6]=1;
 
@@ -609,8 +429,8 @@ void selectivo(int vecDados[6], int juegos[])///YATA
     switch(sumar6)
     {
 
-        case 4:
-        case 5:
+    case 4:
+    case 5:
 
         juegos[8]=1;
 
@@ -650,8 +470,8 @@ void juegoD5(int vecDados[6], int juegos[])///
         juegos[12]=1;
         break;
 
-        case 4:
-        case 5:
+    case 4:
+    case 5:
         juegos[13]=1;
 
 
