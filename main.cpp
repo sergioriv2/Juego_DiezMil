@@ -12,7 +12,7 @@ int main()
 {
     int valorDados[6]; // DECLARACION DE VARIABLE PARA LOS DADOS
     int valorFlechita; // Lo que devuelve la flecha
-    int puntuacion, puntuacion2, puntoss=0, ronda2, lanzamiento, ronda, rondamax, Val = 0;
+    int puntuacion, puntuacion2, puntoss=0, ronda2, lanzamiento, lanzamiento2, ronda, rondamax, Val = 0;
     char listanombres[10][15], nombre1[15], nombre2[15];
     int  puntajes[10], juegos[19], ValorY = 5, indice = 0;
     bool jugar;
@@ -214,7 +214,8 @@ int main()
                 setColor(RED);
                 cout << "Perdiste";
             }
-            else{
+            else
+            {
                 locate(30, 12);
                 setColor(LIGHTGREEN);
                 cout << "Ganaste!!!";
@@ -229,7 +230,7 @@ int main()
 
             break;
         case 8:           // OPCION DE DOS JUGADORES
-            /*system("cls");
+            system("cls");
 
             bordes(1);   // SE DIBUJAN LOS BORDES DE PANTALLA
 
@@ -247,163 +248,252 @@ int main()
 
 
             underlineDraw(2, 3, 115);
+            underlineDraw(2, 19, 115);
 
-            while()
+            while(jugar)
             {
 
-               locate(3, 2);
-               cout << "TURNO DE: ";
-               setColor(GREEN);
-               cout << nombre1;
-               setColor(WHITE);
-               locate(26, 2);
-               cout << "|\tRONDA N: ";
-               setColor(GREEN);
-               cout << ronda;
-               setColor(WHITE);
-               locate(49, 2);
-               cout << "|\tLANZAMIENTO N: ";
-               setColor(GREEN);
-               cout << lanzamiento;
-               setColor(WHITE);
-               locate(77, 2);
-               cout << "|\tPUNTUACION ACTUAL: ";
-               setColor(GREEN);
-               cout << puntuacion;
-               setColor(WHITE);
+                locate(3, 2);
+                cout << "TURNO DE: ";
+                setColor(GREEN);
+                cout << nombre1;
+                setColor(WHITE);
+                locate(26, 2);
+                cout << "|\tRONDA N: ";
+                setColor(GREEN);
+                cout << ronda;
+                setColor(WHITE);
+                locate(49, 2);
+                cout << "|\tLANZAMIENTO N: ";
+                setColor(GREEN);
+                cout << lanzamiento;
+                setColor(WHITE);
+                locate(77, 2);
+                cout << "|\tPUNTUACION ACTUAL: ";
+                setColor(GREEN);
+                cout << puntuacion;
+                setColor(WHITE);
 
-               dadosPrimeraRonda(ronda, valorDados);
-               dibujoDados(4);
+                dadosPrimeraRonda(ronda, valorDados);
+                dibujoDados(4);
 
-               locate(6, 20);
-               cout << "Lanzar dados";
+                locate(6, 20);
+                cout << "Lanzar dados";
 
-               if(ronda%2==0)
-               {
-                   locate(13, 2);
-                   setColor(RED);
-                   cout << "          ";
-                   locate(13, 2);
-                   cout << nombre2;
-                   locate(42, 2);
-                   setColor(GREEN);
-                   cout << ronda;
-                   locate(72, 2);
-                   cout << lanzamiento2;
-                   locate(100, 2);
-                   cout << "          ";
-                   locate(100, 2);
-                   cout << puntuacion2;
-                   setColor(WHITE);
-                   valorFlechita = selectDraw(20, 20, 21, 1);
+                if(ronda%2==0)
+                {
+                    locate(13, 2);
+                    setColor(RED);
+                    cout << "          ";
+                    locate(13, 2);
+                    cout << nombre2;
+                    locate(42, 2);
+                    setColor(GREEN);
+                    cout << ronda;
+                    locate(72, 2);
+                    cout << lanzamiento2;
+                    locate(100, 2);
+                    cout << "          ";
+                    locate(100, 2);
+                    cout << puntuacion2;
+                    setColor(WHITE);
 
-                   switch(valorFlechita)
-                   {
+                    valorFlechita = selectDraw2();
 
-                   case 20:
+                    switch(valorFlechita)
+                    {
 
-                       ronda++;
-                       lanzamiento2++;
-                       puntuacion2 = 20000;
-                       limpiarDados();
+                    case 20:
 
-                       tirarDados(valorDados, 1); /// INGRESAR DADOS MANUALMENTE PARA TESTEAR 0, DADOS AL AZAR 1
+                        ronda++;
+                        lanzamiento2++;
+                        puntuacion2 = 0;
+                        limpiarDados();
+                        ponerEnCero(juegos, 19);
 
-                       for(int i=0; i<6; i++)
-                       {
-                           switch(valorDados[i])
-                           {
-                           case 1:
-                               dibujar1(i);
-                               break;
-                           case 2:
-                               dibujar2(i);
-                               break;
-                           case 3:
-                               dibujar3(i);
-                               break;
-                           case 4:
-                               dibujar4(i);
-                               break;
-                           case 5:
-                               dibujar5(i);
-                               break;
-                           case 6:
-                               dibujar6(i);
-                               break;
-                           }
-                       }
+                        gotoxy(42, 23);
+                        cout << "                                       ";
+                        gotoxy(42, 24);
+                        cout << "                                       ";
+                        gotoxy(42, 25);
+                        cout << "                                       ";
 
-                       locate(6,23);
-                       cout << "(Valores del vector de dados): ";
-                       locate(6, 24);
-                       mostrarDados(valorDados);
-                       break;
-                   }
+                        tirarDados(valorDados,juegos, 1);  /// INGRESAR DADOS MANUALMENTE PARA TESTEAR 0, DADOS AL AZAR 1
 
-               }
+                        for(int i=0; i<6; i++)
+                        {
+                            switch(valorDados[i])
+                            {
+                            case 1:
+                                dibujar1(i);
+                                break;
+                            case 2:
+                                dibujar2(i);
+                                break;
+                            case 3:
+                                dibujar3(i);
+                                break;
+                            case 4:
+                                dibujar4(i);
+                                break;
+                            case 5:
+                                dibujar5(i);
+                                break;
+                            case 6:
+                                dibujar6(i);
+                                break;
+                            }
+                        }
 
-               locate(13, 2);
-                   setColor(GREEN);
-                   cout << "          ";
-                   locate(13, 2);
-                   cout << nombre1;
-                   locate(42, 2);
-                   setColor(GREEN);
-                   cout << ronda;
-                   locate(72, 2);
-                   cout << lanzamiento2;
-                   locate(100, 2);
-                   cout << "          ";
-                   locate(100, 2);
-                   cout << puntuacion;
-               valorFlechita = selectDraw(20, 20, 21, 1);
+                        /*locate(6,23);
+                        cout << "(Valores del vector de dados): ";
+                        locate(6, 24);
+                        mostrarDados(valorDados);*/
 
-               switch(valorFlechita)
-               {
+                        juegoD1     (valorDados, juegos);
+                        juegoD5     (valorDados, juegos);
+                        selectivo   (valorDados, juegos);
+                        tresPares   (valorDados, juegos);
+                        escalera    (valorDados, juegos);
 
-               case 20:
+                        jugadas(juegos);
+                        break;
 
-                   ronda++;
-                   lanzamiento++;
+                    case 23:
+                        indice = buscaruno(juegos, 1);
+                        puntuacion2 += sumarPuntos(indice);
+                        //i--;
+                        locate(42, 23);
+                        setColor(YELLOW);
+                        cout << "X";
+                        setColor(WHITE);
+                        break;
+                    case 24:
+                        indice = buscaruno(juegos, 2);
+                        puntuacion2 += sumarPuntos(indice);
+                        //i--;
+                        locate(42, 24);
+                        setColor(YELLOW);
+                        cout << "X";
+                        setColor(WHITE);
+                        break;
+                    case 25:
+                        indice = buscaruno(juegos, 3);
+                        puntuacion2 += sumarPuntos(indice);
+                        //i--;
+                        locate(42, 25);
+                        setColor(YELLOW);
+                        cout << "X";
+                        setColor(WHITE);
+                        break;
+                    }
 
-                   limpiarDados();
+                }
 
-                   tirarDados(valorDados, 1); /// INGRESAR DADOS MANUALMENTE PARA TESTEAR 0, DADOS AL AZAR 1
+                locate(13, 2);
+                setColor(GREEN);
+                cout << "          ";
+                locate(13, 2);
+                cout << nombre1;
+                locate(42, 2);
+                setColor(GREEN);
+                cout << ronda;
+                locate(72, 2);
+                cout << lanzamiento;
+                locate(100, 2);
+                cout << "          ";
+                locate(100, 2);
+                cout << puntuacion;
 
-                   for(int i=0; i<6; i++)
-                   {
-                       switch(valorDados[i])
-                       {
-                       case 1:
-                           dibujar1(i);
-                           break;
-                       case 2:
-                           dibujar2(i);
-                           break;
-                       case 3:
-                           dibujar3(i);
-                           break;
-                       case 4:
-                           dibujar4(i);
-                           break;
-                       case 5:
-                           dibujar5(i);
-                           break;
-                       case 6:
-                           dibujar6(i);
-                           break;
-                       }
-                   }
+                valorFlechita = selectDraw2();
 
-                   locate(6,23);
-                   cout << "(Valores del vector de dados): ";
-                   locate(6, 24);
-                   mostrarDados(valorDados);
+                switch(valorFlechita)
+                {
 
+                case 20:
 
-                   break;
-               }
+                    ronda++;
+                    lanzamiento++;
+
+                    limpiarDados();
+                    ponerEnCero(juegos, 19);
+
+                    gotoxy(42, 23);
+                    cout << "                                       ";
+                    gotoxy(42, 24);
+                    cout << "                                       ";
+                    gotoxy(42, 25);
+                    cout << "                                       ";
+
+                    tirarDados(valorDados, juegos, 1); /// INGRESAR DADOS MANUALMENTE PARA TESTEAR 0, DADOS AL AZAR 1
+
+                    for(int i=0; i<6; i++)
+                    {
+                        switch(valorDados[i])
+                        {
+                        case 1:
+                            dibujar1(i);
+                            break;
+                        case 2:
+                            dibujar2(i);
+                            break;
+                        case 3:
+                            dibujar3(i);
+                            break;
+                        case 4:
+                            dibujar4(i);
+                            break;
+                        case 5:
+                            dibujar5(i);
+                            break;
+                        case 6:
+                            dibujar6(i);
+                            break;
+                        }
+                    }
+
+                    /*locate(6,23);
+                    cout << "(Valores del vector de dados): ";
+                    locate(6, 24);
+                    mostrarDados(valorDados);*/
+
+                    juegoD1     (valorDados, juegos);
+                    juegoD5     (valorDados, juegos);
+                    selectivo   (valorDados, juegos);
+                    tresPares   (valorDados, juegos);
+                    escalera    (valorDados, juegos);
+
+                    jugadas(juegos);
+                    break;
+
+                case 23:
+                    indice = buscaruno(juegos, 1);
+                    puntuacion += sumarPuntos(indice);
+                    //i--;
+                    locate(42, 23);
+                    setColor(YELLOW);
+                    cout << "X";
+                    setColor(WHITE);
+                    break;
+                case 24:
+                    indice = buscaruno(juegos, 2);
+                    puntuacion += sumarPuntos(indice);
+                    //i--;
+                    locate(42, 24);
+                    setColor(YELLOW);
+                    cout << "X";
+                    setColor(WHITE);
+                    break;
+                case 25:
+                    indice = buscaruno(juegos, 3);
+                    puntuacion += sumarPuntos(indice);
+                    //i--;
+                    locate(42, 25);
+                    setColor(YELLOW);
+                    cout << "X";
+                    setColor(WHITE);
+                    break;
+                }
 
             }
 
@@ -415,7 +505,7 @@ int main()
 
             Val+=2;
 
-            system("pause");*/
+            system("pause");
             break;
 
         case 10:         // OPCION DE MAX PUNTUACION
