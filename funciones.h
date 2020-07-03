@@ -22,33 +22,105 @@ void dadosPrimeraRonda(int ronda, int dados[]);
 
 void dosJugadores(char nombre1[], char nombre2[]);
 
-void limpiarListaNombres(char lista[10][15]);
-
 int unJugador(char nombreJ1[]);
 
+void ponerEnCero(int vec[], int tam);
+// LE PONE 0 A TODOS LOS VALORES A UN VECTOR DE TAMAÑO N
+
+void limpiarListaNombres(char lista[10][15]);
+
+int buscaruno(int juegos[19], int N_uno);
+
+
+int sumarPuntos(int V);
 
 /// -------------- DECLARACION DE FUNCIONES DE LAS JUGADAS ----------------
 
-int jugadas(int juegos[19]);
+void jugadas(int juegos[19]);
 
-void tresPares(int vecDados[], int juegos[]);
+void tresPares(int vecDados[6], int juegos[19]);
 
-void selectivo(int vecDados[], int juegos[]);
+void selectivo(int vecDados[6], int juegos[19]);
 
-void juegoD5(int vecDados[], int juegos[]);
+void juegoD5(int vecDados[6], int juegos[19]);
 
-void escalera(int vecDados[], int juegos[]);
+void escalera(int vecDados[6], int juegos[19]);
 
-void juegoD1(int vecDados[], int juegos[]);
+void juegoD1(int vecDados[6], int juegos[19]);
 
 /// -------------- DESARROLLO DE LAS FUNCIONES DE LAS JUGADAS ----------------
 
-
-int jugadas(int juegos[19])
+int sumarPuntos(int V)
 {
-    int puntoss = 0, vueltas = 23;
+    int puntoss = 0;
 
-    int  tot;
+    switch(V)
+    {
+    case 0:
+        puntoss+=1500;
+        break;
+    case 1:
+        puntoss+=1000;
+        break;
+    case 2:
+        puntoss+=400;
+        break;
+    case 3:
+        puntoss+=200;
+        break;
+    case 4:
+        puntoss+=600;
+        break;
+    case 5:
+        puntoss+=300;
+        break;
+    case 6:
+        puntoss+=800;
+        break;
+    case 7:
+        puntoss+=400;
+        break;
+    case 8:
+        puntoss+=1200;
+        break;
+    case 9:
+        puntoss+=600;
+        break;
+    case 10:
+        puntoss+=50;
+        break;
+    case 11:
+        puntoss+=100;
+        break;
+    case 12:
+        puntoss+=500;
+        break;
+    case 13:
+        puntoss+=1000;
+        break;
+    case 14:
+        puntoss+=100;
+        break;
+    case 15:
+        puntoss+=200;
+        break;
+    case 16:
+        puntoss+=1000;
+        break;
+    case 17:
+        puntoss+=2000;
+        break;
+    case 18:
+        puntoss+=10000;
+        break;
+    }
+    return puntoss;
+}
+
+void jugadas(int juegos[19])
+{
+    int vueltas = 23;
+
 
     for(int forx=0; forx<19; forx++)
     {
@@ -59,153 +131,190 @@ int jugadas(int juegos[19])
             {
 
             case 0:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Escalera"<<endl;
+                locate(70, vueltas);
+                cout << "1500 puntos";
                 vueltas++;
                 break;
 
             case 1:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Tres Pares"<<endl;
+                locate(70, vueltas);
+                cout << "1000 puntos";
                 vueltas++;
                 break;
 
             case 2:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Trio de 2++"<<endl;
+                locate(70, vueltas);
+                cout << "400 puntos";
                 vueltas++;
                 break;
 
             case 3:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Trio de 2"<<endl;
+                locate(70, vueltas);
+                cout << "200 puntos";
                 vueltas++;
                 break;
 
             case 4:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Trio de 3++"<<endl;
+                locate(70, vueltas);
+                cout << "600 puntos";
                 vueltas++;
                 break;
             case 5:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Trio de 3"<<endl;
+                 locate(70, vueltas);
+                cout << "300 puntos";
                 vueltas++;
                 break;
 
             case 6:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Trio de 4++"<<endl;
+                 locate(70, vueltas);
+                cout << "800 puntos";
                 vueltas++;
                 break;
 
             case 7:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Trio de 4"<<endl;
+                 locate(70, vueltas);
+                cout << "400 puntos";
                 vueltas++;
                 break;
 
             case 8:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Trio de 6++"<<endl;
+                 locate(70, vueltas);
+                cout << "1200 puntos";
                 vueltas++;
                 break;
             case 9:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Trio de 6"<<endl;
+                 locate(70, vueltas);
+                cout << "600 puntos";
                 vueltas++;
                 break;
 
             case 10:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Juego de 5"<<endl;
+                locate(70, vueltas);
+                cout << "50 puntos";
                 vueltas++;
                 break;
 
             case 11:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Juego de 5"<<endl;
+                locate(70, vueltas);
+                cout << "100 puntos";
                 vueltas++;
                 break;
 
             case 12:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Trio de 5"<<endl;
+                 locate(70, vueltas);
+                cout << "500 puntos";
                 vueltas++;
                 break;
             case 13:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Trio de 5++"<<endl;
+                 locate(70, vueltas);
+                cout << "1000 puntos";
                 vueltas++;
                 break;
 
             case 14:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Juego de 1"<<endl;
-                puntoss+= 100;
+                 locate(70, vueltas);
+                cout << "100 puntos";
                 vueltas++;
                 break;
 
             case 15:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Juego de 1"<<endl;
+                 locate(70, vueltas);
+                cout << "200 puntos";
                 vueltas++;
                 break;
 
             case 16:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Trio de 1"<<endl;
                 vueltas++;
+                 locate(70, vueltas);
+                cout << "1000 puntos";
                 break;
 
             case 17:
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Trio 1 ampliado"<<endl;
+                 locate(70, vueltas);
+                cout << "2000 puntos";
                 vueltas++;
                 break;
 
             case 18:
 
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"                   "<<endl;
-                gotoxy(45,vueltas);
+                locate(45,vueltas);
                 cout<<"Sexteto"<<endl;
+                 locate(70, vueltas);
+                cout << "10000 puntos";
                 vueltas++;
                 break;
             }///switch
@@ -213,13 +322,12 @@ int jugadas(int juegos[19])
         }///if
 
     }///for
-    return puntoss;
 
 
 }
 ///------------------- DESARROLLO DE FUNCIONES ----------------------
 
-void escalera(int vecDados[6], int juegos[])
+void escalera(int vecDados[6], int juegos[19])
 {
 
 
@@ -275,10 +383,10 @@ void escalera(int vecDados[6], int juegos[])
 
 }
 
-void tresPares(int vecdados[6], int juegos[])///
+void tresPares(int vecdados[6], int juegos[19])///
 {
 
-    int vecdadoscomp[6], analizar, contar, par = 0, puntos = 0;
+    int vecdadoscomp[6], analizar, contar, par = 0;
     bool bandera = false;
 
     for(int i=0; i<6; i++)
@@ -343,7 +451,7 @@ void tresPares(int vecdados[6], int juegos[])///
 
 }
 
-void selectivo(int vecDados[6], int juegos[])///YATA
+void selectivo(int vecDados[6], int juegos[19])///YATA
 {
 
     int sumar2=0, sumar4=0, sumar3=0, sumar6=0;
@@ -443,7 +551,7 @@ void selectivo(int vecDados[6], int juegos[])///YATA
     }///switch 6
 }
 
-void juegoD5(int vecDados[6], int juegos[])///
+void juegoD5(int vecDados[6], int juegos[19])///
 {
 
     int numeros=0;
@@ -582,6 +690,89 @@ void dosJugadores(char nombre1[], char nombre2[])
 
 }
 
+void ponerEnCero(int vec[], int tam)
+{
+    for(int i=0; i<tam; i++)
+    {
+        vec[i] = 0;
+    }
+}
+
+void compararTablas(int juegos[19], int tabla[3])
+{
+    int p = 0;
+
+    for(int i=0; i<19; i++)
+    {
+        if(juegos[i] == 1)
+        {
+            tabla[p] = 1;
+            p++;
+        }
+    }
+}
+
+int buscaruno(int juegos[19], int N_uno)
+{
+    bool primeruno = true, segundouno = true, terceruno = true;
+    int v = -1, con = 0;
+
+
+
+    switch(N_uno)
+    {
+
+    case 1:
+
+        while(primeruno)
+        {
+
+            if(juegos[v] == 1)
+            {
+                primeruno = false;
+            }
+            else
+            {
+                v++;
+            }
+
+        }
+
+        break;
+    case 2:
+        while(segundouno)
+        {
+            v++;
+            if(juegos[v] == 1)
+            {
+                con++;
+            }
+            if(con == 2)
+            {
+                segundouno = false;
+            }
+
+
+        }
+        break;
+    case 3:
+        while(terceruno)
+        {
+            v++;
+           if(juegos[v] == 1)
+           {
+               con++;
+           }
+           if(con == 3)
+           {
+               terceruno = false;
+           }
+
+        }
+        break;
+    }
+    return v;
+}
 
 
 
@@ -653,13 +844,6 @@ void  dadosPrimeraRonda(int ronda, int dados[])
 
 }
 
-void ponerEnCero(int vec[19])
-{
-    for(int i=0; i<19; i++)
-    {
-        vec[i] = 0;
-    }
-}
 
 
 
