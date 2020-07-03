@@ -57,7 +57,7 @@ void menuPrincipal()
     setColor(WHITE);
     cout << " Dos jugadores";
     locate(6,10);
-     setColor(BLUE);
+    setColor(BLUE);
     printf("%c", 158);
     setColor(WHITE);
     cout << " Puntuacion maxima";
@@ -440,75 +440,75 @@ void dibujar6(int n_dado)
 void dibujoDados(int n_dado)
 {
 
-int x = 6, y = 4;
-int anteriorY = y;
+    int x = 6, y = 4;
+    int anteriorY = y;
 
-for(int j=1; j<=6; j++)
-{
-    locate(x, y);
-
-    printf("%c", 201);
-    for(int i=1; i<=9; i++)
+    for(int j=1; j<=6; j++)
     {
-    printf("%c", 205);
+        locate(x, y);
+
+        printf("%c", 201);
+        for(int i=1; i<=9; i++)
+        {
+            printf("%c", 205);
+        }
+        printf("%c", 187);
+
+        y++;
+
+        locate(x,y); ///
+
+        printf("%c", 186);
+        for(int i=1; i<=9; i++)
+        {
+            printf("%c", 92);
+        }
+        printf("%c", 186);
+
+        y++;
+
+        locate(x,y); ///
+
+        printf("%c", 186);
+        for(int i=1; i<=9; i++)
+        {
+            printf("%c", 92);
+        }
+        printf("%c", 186);
+
+        y++;
+
+        locate(x,y); ///
+
+        printf("%c", 204);
+        for(int i=1; i<=9; i++)
+        {
+            printf("%c", 205);
+        }
+        printf("%c", 185);
+
+        y++;
+
+        for(int i = 1; i<=3; i++)
+        {
+            locate(x,y); ///
+            printf("%c", 186);
+            locate(x+10,y);
+            printf("%c", 186);
+            y++;
+        }
+
+        locate(x,y); ///
+        printf("%c", 200);
+        for(int i=1; i<=9; i++)
+        {
+            printf("%c", 205);
+        }
+        printf("%c", 188);
+
+        x+= 15;
+        y = anteriorY;
     }
-    printf("%c", 187);
-
-    y++;
-
-    locate(x,y); ///
-
-    printf("%c", 186);
-    for(int i=1; i<=9; i++)
-    {
-    printf("%c", 92);
-    }
-    printf("%c", 186);
-
-    y++;
-
-    locate(x,y); ///
-
-    printf("%c", 186);
-    for(int i=1; i<=9; i++)
-    {
-    printf("%c", 92);
-    }
-    printf("%c", 186);
-
-    y++;
-
-    locate(x,y); ///
-
-    printf("%c", 204);
-     for(int i=1; i<=9; i++)
-    {
-    printf("%c", 205);
-    }
-    printf("%c", 185);
-
-    y++;
-
-    for(int i = 1; i<=3; i++)
-    {
-       locate(x,y); ///
-       printf("%c", 186);
-       locate(x+10,y);
-       printf("%c", 186);
-       y++;
-    }
-
-    locate(x,y); ///
-    printf("%c", 200);
-    for(int i=1; i<=9; i++)
-    {
-        printf("%c", 205);
-    }
-    printf("%c", 188);
-
-    x+= 15;
-    y = anteriorY;
-}
 }
 
 
@@ -518,211 +518,216 @@ void limpiarDados()
 
     anteriorY = y;
 
-        for(int j=1; j<=6; j++)
+    for(int j=1; j<=6; j++)
+    {
+        for(int i=1; i<=3; i++)
         {
-            for(int i=1; i<=3; i++)
-           {
-               locate(x, y);
-               cout << "       ";
-               y++;
-           }
-
-           y = anteriorY;
-           x +=15;
+            locate(x, y);
+            cout << "       ";
+            y++;
         }
+
+        y = anteriorY;
+        x +=15;
+    }
 
 }
 /// ---------- DESARROLLO DE DIBUJOS GRALES ---------
 
 
-void bordes(int c){
-  int y = 1, y2 = 1, x=2, x2=1;
-
-switch(c)
+void bordes(int c)
 {
-case 1:
-    y = 1;
-    y2 = 1;
-    x=2;
-    x2=1;
-    rlutil::setColor(CYAN);
-    printf("%c", 219);
-    for(int i = 0; i<=28; i++)
+    int y = 1, y2 = 1, x=2, x2=1;
+
+    switch(c)
     {
-        y++;
-        rlutil::locate(1,y);
+    case 1:
+        y = 1;
+        y2 = 1;
+        x=2;
+        x2=1;
+        setColor(CYAN);
         printf("%c", 219);
-    }
-    rlutil::locate(1,30);
-    printf("%c", 223);
+        for(int i = 0; i<=28; i++)
+        {
+            y++;
+            locate(1,y);
+            printf("%c", 219);
+        }
+        locate(1,30);
+        printf("%c", 223);
 
-    // Fin borde izq
+        // Fin borde izq
 
-    rlutil::locate(120,1);
-    printf("%c", 219);
-    for(int i = 0; i<=28; i++)
-    {
-        y2++;
-        rlutil::locate(120,y2);
+        locate(120,1);
         printf("%c", 219);
-    }
+        for(int i = 0; i<=28; i++)
+        {
+            y2++;
+            locate(120,y2);
+            printf("%c", 219);
+        }
 
-    rlutil::locate(120,30);
-    printf("%c", 223);
-
-    // DIBUJO DE BORDES HORIZONTALES
-
-    rlutil::locate(2,1);
-    printf("%c", 223);
-    for(int i=2; i<119; i++)
-    {
-        x++;
-        rlutil::locate(x,1);
+        locate(120,30);
         printf("%c", 223);
-    }
-    for(int i=2; i<120; i++)
-    {
-        x2++;
-        rlutil::locate(x2,30);
+
+        // DIBUJO DE BORDES HORIZONTALES
+
+        locate(2,1);
         printf("%c", 223);
-    }
-    break;
-case 2:
-    rlutil::setColor(LIGHTBLUE);
-    printf("%c", 219);
-    for(int i = 0; i<=28; i++)
-    {
-        rlutil::locate(1,y);
+        for(int i=2; i<119; i++)
+        {
+            x++;
+            locate(x,1);
+            printf("%c", 223);
+        }
+        for(int i=2; i<120; i++)
+        {
+            x2++;
+            locate(x2,30);
+            printf("%c", 223);
+        }
+        break;
+    case 2:
+        setColor(LIGHTBLUE);
         printf("%c", 219);
-        y++;
-    }
-    rlutil::locate(1,30);
-    printf("%c", 223);
+        for(int i = 0; i<=28; i++)
+        {
+            locate(1,y);
+            printf("%c", 219);
+            y++;
+        }
+        locate(1,30);
+        printf("%c", 223);
 
-    // Fin borde izq
+        // Fin borde izq
 
-    rlutil::locate(120,1);
-    printf("%c", 219);
-    for(int i = 0; i<=28; i++)
-    {
-        y2++;
-        rlutil::locate(120,y2);
+        locate(120,1);
         printf("%c", 219);
-    }
+        for(int i = 0; i<=28; i++)
+        {
+            y2++;
+            locate(120,y2);
+            printf("%c", 219);
+        }
 
-    rlutil::locate(120,30);
-    printf("%c", 223);
-
-    // DIBUJO DE BORDES HORIZONTALES
-
-    rlutil::locate(2,1);
-    printf("%c", 223);
-    for(int i=2; i<119; i++)
-    {
-        x++;
-        rlutil::locate(x,1);
+        locate(120,30);
         printf("%c", 223);
-    }
-    for(int i=2; i<120; i++)
-    {
-        x2++;
-        rlutil::locate(x2,30);
+
+        // DIBUJO DE BORDES HORIZONTALES
+
+        locate(2,1);
         printf("%c", 223);
-    }
-    break;
-case 3:
-    rlutil::setColor(RED);
-    printf("%c", 219);
-    for(int i = 0; i<=28; i++)
-    {
-        rlutil::locate(1,y);
+        for(int i=2; i<119; i++)
+        {
+            x++;
+            locate(x,1);
+            printf("%c", 223);
+        }
+        for(int i=2; i<120; i++)
+        {
+            x2++;
+            locate(x2,30);
+            printf("%c", 223);
+        }
+        break;
+    case 3:
+        setColor(RED);
         printf("%c", 219);
-        y++;
-    }
-    rlutil::locate(1,30);
-    printf("%c", 223);
+        for(int i = 0; i<=28; i++)
+        {
+            locate(1,y);
+            printf("%c", 219);
+            y++;
+        }
+        locate(1,30);
+        printf("%c", 223);
 
-    // Fin borde izq
+        // Fin borde izq
 
-    rlutil::locate(120,1);
-    printf("%c", 219);
-    for(int i = 0; i<=28; i++)
-    {
-        y2++;
-        rlutil::locate(120,y2);
+        locate(120,1);
         printf("%c", 219);
-    }
+        for(int i = 0; i<=28; i++)
+        {
+            y2++;
+            locate(120,y2);
+            printf("%c", 219);
+        }
 
-    rlutil::locate(120,30);
-    printf("%c", 223);
-
-    // DIBUJO DE BORDES HORIZONTALES
-
-    rlutil::locate(2,1);
-    printf("%c", 223);
-    for(int i=2; i<119; i++)
-    {
-        x++;
-        rlutil::locate(x,1);
+        locate(120,30);
         printf("%c", 223);
-    }
-    for(int i=2; i<120; i++)
-    {
-        x2++;
-        rlutil::locate(x2,30);
+
+        // DIBUJO DE BORDES HORIZONTALES
+
+        locate(2,1);
         printf("%c", 223);
+        for(int i=2; i<119; i++)
+        {
+            x++;
+            locate(x,1);
+            printf("%c", 223);
+        }
+        for(int i=2; i<120; i++)
+        {
+            x2++;
+            locate(x2,30);
+            printf("%c", 223);
+        }
+        break;
     }
-    break;
-}
 
     setColor(WHITE);
 
 }
 
-void underlineDraw(int x, int y, int m){
-    rlutil::setColor(LIGHTBLUE);
-    for(int i=0; i<=m; i++){
+void underlineDraw(int x, int y, int m)
+{
+    setColor(LIGHTBLUE);
+    for(int i=0; i<=m; i++)
+    {
         x++;
-        rlutil::locate(x,y);
+        locate(x,y);
         printf("%c", 196);
     }
-    rlutil::setColor(rlutil::WHITE);
+    setColor( WHITE);
 }
 
-int selectDraw(int x, int y, int y2, int s){
-rlutil::setColor(rlutil::BLUE);
-int val_Y = y, key = 1;
+int selectDraw(int x, int y, int y2, int s)
+{
+    setColor( BLUE);
+    int val_Y = y, key = 1;
 
-rlutil::locate(x, val_Y);
-printf("%c", 174);
+    locate(x, val_Y);
+    printf("%c", 174);
 
-   rlutil::locate(x, val_Y);
-cout << " ";
-rlutil::locate(x, val_Y);
-printf("%c", 174);
+    locate(x, val_Y);
+    cout << " ";
+    locate(x, val_Y);
+    printf("%c", 174);
 
-    while(key != 13){
+    while(key != 13)
+    {
         key = getch();
         switch (key)
         {
         case 80:
-            rlutil::locate(x, val_Y);
+            locate(x, val_Y);
             cout << " ";
             val_Y+=s;
-            rlutil::locate(x, val_Y);
+            locate(x, val_Y);
             printf("%c", 174);
             if(val_Y>y2)
             {
-            rlutil::locate(x, val_Y);
-            cout << " ";
-            val_Y-=s;
-            rlutil::locate(x, val_Y);
-            printf("%c", 174);
+                locate(x, val_Y);
+                cout << " ";
+                val_Y-=s;
+                locate(x, val_Y);
+                printf("%c", 174);
             }
             break;
 
         case 72:
-            rlutil::locate(x, val_Y);       /* Arregle un error de las flechas que se dibujaba otra al subir - Sergio*/
+            locate(x, val_Y);
             cout << " ";
             val_Y-=s;
             if(val_Y<y)
@@ -733,7 +738,7 @@ printf("%c", 174);
                 locate(x, val_Y);
                 printf("%c", 174);
             }
-            rlutil::locate(x, val_Y);
+            locate(x, val_Y);
             printf("%c", 174);
             break;
         }
@@ -741,6 +746,99 @@ printf("%c", 174);
 
     setColor(WHITE);
     return val_Y; // SE DEVUELVE LA ULTIMA UBICACION DE LA FLECHA AL PONER ENTER
+
+}
+
+
+int selectDraw2()
+{
+    setColor(BLUE);
+    int x, y, key = 1;
+
+    x = 20;
+    y = 20;
+
+    locate(x, y);
+    printf("%c", 174);
+
+
+
+    while(key!= 13)
+    {
+        key = getch();
+        switch(key)
+        {
+        case 80:
+
+            if(x!=62)
+            {
+
+                locate(x, y);
+                cout << " ";
+                x = 62;
+                y = 23;
+                locate(x, y);
+                printf("%c", 174);
+            }
+            else
+            {
+                locate(x, y);
+                cout << " ";
+                y++;
+
+                if(y>25)
+                {
+                    y--;
+                    locate(x, y);
+                    printf("%c", 174);
+                }
+                else{
+                locate(x, y);
+                printf("%c", 174);
+                }
+
+            }
+
+            break;
+        case 72:
+
+
+                if(x!=20 && y == 23)
+                {
+                    locate(x, y);
+                    cout << " ";
+                    x = 20;
+                    y = 20;
+                    locate(x, y);
+                    printf("%c", 174);
+                }
+
+                else{
+                    locate(x, y);
+                    cout << " ";
+                    y--;
+                    if(y<20)
+                    {
+                        y++;
+                        locate(x, y);
+                        printf("%c", 174);
+                    }
+                    else{
+                       locate(x, y);
+                        printf("%c", 174);
+                    }
+
+                }
+
+            break;
+        }
+    }
+    locate(x, y);
+    cout << " ";
+
+
+    setColor(WHITE);
+    return y; // SE DEVUELVE LA ULTIMA UBICACION DE LA FLECHA AL PONER ENTER
 
 }
 #endif // FUNCIONESDIBUJO_H_INCLUDED
