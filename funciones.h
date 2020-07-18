@@ -22,7 +22,7 @@ void dadosPrimeraRonda(int ronda, int dados[]);
 
 void dosJugadores(char nombre1[], char nombre2[]);
 
-int unJugador(char nombreJ1[]);
+void unJugador(char nombreJ1[]);
 
 void ponerEnCero(int vec[], int tam);
 // LE PONE 0 A TODOS LOS VALORES A UN VECTOR DE TAMAÑO N
@@ -120,7 +120,7 @@ int sumarPuntos(int V)
 
 void jugadas(int juegos[19])
 {
-    int vueltas = 23;
+    int vueltas = 20;
 
 
     for(int forx=0; forx<19; forx++)
@@ -653,9 +653,9 @@ void limpiarListaNombres(char lista[10][15])
     }
 }
 
-int unJugador(char nombreJ1[])
+void unJugador(char nombreJ1[])
 {
-    int rondasg;
+
     bordes(1);
 
     locate(50, 3);
@@ -667,18 +667,10 @@ int unJugador(char nombreJ1[])
     locate(46,8);
     cin.getline(nombreJ1, 15);
 
-    locate(27,10);
-    cout << "Ingresa la cantidad";
-    locate(27, 11);
-    cout << "de rondas ganadoras:  ";
-    cin >> rondasg;
-
-    cin.ignore();
-
     system("cls");
 
 
-    return rondasg;
+
 }
 
 void dosJugadores(char nombre1[], char nombre2[])
@@ -733,7 +725,7 @@ void compararTablas(int juegos[19], int tabla[3])
 int buscaruno(int juegos[19], int N_uno)
 {
     bool primeruno = true, segundouno = true, terceruno = true;
-    int v = -1, con = 0;
+    int v = 0, con = 0;
 
     switch(N_uno)
     {
@@ -758,7 +750,7 @@ int buscaruno(int juegos[19], int N_uno)
     case 2:
         while(segundouno)
         {
-            v++;
+
             if(juegos[v] == 1)
             {
                 con++;
@@ -767,6 +759,9 @@ int buscaruno(int juegos[19], int N_uno)
             {
                 segundouno = false;
             }
+            else{
+              v++;
+            }
 
 
         }
@@ -774,7 +769,6 @@ int buscaruno(int juegos[19], int N_uno)
     case 3:
         while(terceruno)
         {
-            v++;
            if(juegos[v] == 1)
            {
                con++;
@@ -782,6 +776,9 @@ int buscaruno(int juegos[19], int N_uno)
            if(con == 3)
            {
                terceruno = false;
+           }
+           else{
+            v++;
            }
 
         }
