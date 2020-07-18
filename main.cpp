@@ -12,7 +12,7 @@ using namespace std;
 int main()
 {
     int valorFlechita;
-    int rondamax, Val = 0;
+    int  Val = 0;
     char listanombres[10][15], nombre1[15], nombre2[15];
     int  puntajes[10], ValorY = 5, puntuacion;
 
@@ -43,11 +43,12 @@ int main()
             system("cls");
 
             bordes(1);
-            rondamax = unJugador(nombre1);
+
+            unJugador(nombre1);
 
             bordes(1);
 
-            puntuacion = gameplay_1(rondamax, nombre1);
+            puntuacion = gameplay_1(nombre1);
 
             // PUNTUACION FINAL
 
