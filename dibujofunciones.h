@@ -781,12 +781,12 @@ void dibujo(int t[])
 }
 
 
-int selectDraw2(int unos[]) // ASCII 80 ABAJO, 72 ARRIBA, 75 IZQUIERDA, 77 DERECHA
+int selectDraw2(int unos[3]) // ASCII 80 ABAJO, 72 ARRIBA, 75 IZQUIERDA, 77 DERECHA
 {
     setColor(BLUE);
-    int x, y, key = 1, vueltas = 0;
+    int x, y, key = 1, pos = 0;
 
-    x = 20;
+    x = 30;
     y = 20;
 
     locate(x, y);
@@ -797,70 +797,53 @@ int selectDraw2(int unos[]) // ASCII 80 ABAJO, 72 ARRIBA, 75 IZQUIERDA, 77 DEREC
     {
         key = getch();
 
-        if(vueltas<0)
+        if(pos<0)
         {
-            vueltas = 0;
+            pos = 0;
         }
 
         switch(key)
         {
         case 80:
-
-            if(vueltas >= 0)
-            {
-                if(unos[vueltas] != 0)
-                {
-                    vueltas++;
-
-                    if(x!=62)
-                    {
-
-                        locate(x, y);
-                        cout << " ";
-                        x = 62;
-                        y = 23;
-                        locate(x, y);
-                        printf("%c", 174);
-                    }
-                    else
-                    {
-                        locate(x, y);
-                        cout << " ";
-                        y++;
-
-                        if(y>25)
-                        {
-                            y--;
-                            locate(x, y);
-                            printf("%c", 174);
-                        }
-                        else
-                        {
-                            locate(x, y);
-                            printf("%c", 174);
-                        }
-
-                    }
-                }
-
-            }
-
-            break;
-        case 72:
-
-            if(x!=20 && y == 23)
+            if(x == 30)
             {
                 locate(x, y);
                 cout << " ";
-                x = 20;
-                y = 20;
+                y++;
+                if(y>=22)
+                {
+                    y--;
+                }
                 locate(x, y);
                 printf("%c", 174);
-                vueltas--;
-            }
-
+            } /// PRIMERA COL
             else
             {
+                if(unos[pos+1]!=0)
+                {
+                    locate(x, y);
+                    cout << " ";
+                    y++;
+                    locate(x, y);
+                    printf("%c", 174);
+                    pos++;
+                }
+            }
+            break;
+        case 72:
+            if(x == 30)
+            {
+                locate(x, y);
+                cout << " ";
+                y--;
+                if(y<=19)
+                {
+                    y++;
+                }
+                locate(x, y);
+                printf("%c", 174);
+            } /// PRIMERA COL
+            else{
                 locate(x, y);
                 cout << " ";
                 y--;
@@ -876,12 +859,29 @@ int selectDraw2(int unos[]) // ASCII 80 ABAJO, 72 ARRIBA, 75 IZQUIERDA, 77 DEREC
                     printf("%c", 174);
                 }
 
-                vueltas--;
+                pos--;
+            }
+            break;
+        case 75:
+            locate(x, y);
+            cout << " ";
+            x = 30;
+            y = 20;
+            locate(x, y);
+            printf("%c", 174);
+            pos--;
+            break;
+        case 77:
+            if(unos[0]==1)
+            {
+            locate(x, y);
+            cout << " ";
+            x = 58;
+            y = 20;
+            locate(x, y);
+            printf("%c", 174);
 
             }
-
-
-
             break;
         }
     }
@@ -891,7 +891,6 @@ int selectDraw2(int unos[]) // ASCII 80 ABAJO, 72 ARRIBA, 75 IZQUIERDA, 77 DEREC
 
 
     setColor(WHITE);
-    return y; // SE DEVUELVE LA ULTIMA UBICACION DE LA FLECHA AL PONER ENTER
-
+    return x+y; // SE DEVUELVE LA ULTIMA UBICACION DE LA FLECHA AL PONER ENTER
 }
 #endif // FUNCIONESDIBUJO_H_INCLUDED
