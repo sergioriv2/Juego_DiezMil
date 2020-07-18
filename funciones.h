@@ -31,6 +31,7 @@ void limpiarListaNombres(char lista[10][15]);
 
 int buscaruno(int juegos[19], int N_uno);
 
+void ordenar_minlista(int juegos[19], int lista[]);
 
 int sumarPuntos(int V);
 
@@ -292,9 +293,9 @@ void jugadas(int juegos[19])
                 cout<<"                   "<<endl;
                 locate(45,vueltas);
                 cout<<"Trio de 1"<<endl;
-                vueltas++;
-                 locate(70, vueltas);
+                locate(70, vueltas);
                 cout << "1000 puntos";
+                vueltas++;
                 break;
 
             case 17:
@@ -449,6 +450,20 @@ void tresPares(int vecdados[6], int juegos[19])///
 
 
 
+}
+
+void ordenar_minlista(int juegos[19], int lista[])
+{
+    int v = 0;
+
+    for(int i=0; i<19; i++)
+    {
+        if(juegos[i] == 1)
+        {
+            lista[v] = 1;
+            v++;
+        }
+    }
 }
 
 void selectivo(int vecDados[6], int juegos[19])///YATA
@@ -719,8 +734,6 @@ int buscaruno(int juegos[19], int N_uno)
 {
     bool primeruno = true, segundouno = true, terceruno = true;
     int v = -1, con = 0;
-
-
 
     switch(N_uno)
     {
