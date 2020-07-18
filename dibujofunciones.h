@@ -29,6 +29,8 @@ int selectDraw(int x, int y, int y2, int s); // int s = saltos
 
 void limpiarDados();
 
+void dibujo(int t[]);
+
 void dibujar1(int n_dado);
 
 void dibujar2(int n_dado);
@@ -749,11 +751,40 @@ int selectDraw(int x, int y, int y2, int s)
 
 }
 
+void dibujo(int t[])
+{
+    for(int i=0; i<6; i++)
+    {
+        switch(t[i])
+        {
+        case 1:
+            dibujar1(i);
+            break;
+        case 2:
+            dibujar2(i);
+            break;
+        case 3:
+            dibujar3(i);
+            break;
+        case 4:
+            dibujar4(i);
+            break;
+        case 5:
+            dibujar5(i);
+            break;
+        case 6:
+            dibujar6(i);
+            break;
+        }
+    }
 
-int selectDraw2()
+}
+
+
+int selectDraw2(int unos[]) // ASCII 80 ABAJO, 72 ARRIBA, 75 IZQUIERDA, 77 DERECHA
 {
     setColor(BLUE);
-    int x, y, key = 1;
+    int x, y, key = 1, vueltas = 0;
 
     x = 20;
     y = 20;
@@ -762,39 +793,54 @@ int selectDraw2()
     printf("%c", 174);
 
 
-
     while(key!= 13)
     {
         key = getch();
+
+        if(vueltas<0)
+        {
+            vueltas = 0;
+        }
+
         switch(key)
         {
         case 80:
 
-            if(x!=62)
+            if(vueltas >= 0)
             {
-
-                locate(x, y);
-                cout << " ";
-                x = 62;
-                y = 23;
-                locate(x, y);
-                printf("%c", 174);
-            }
-            else
-            {
-                locate(x, y);
-                cout << " ";
-                y++;
-
-                if(y>25)
+                if(unos[vueltas] != 0)
                 {
-                    y--;
-                    locate(x, y);
-                    printf("%c", 174);
-                }
-                else{
-                locate(x, y);
-                printf("%c", 174);
+                    vueltas++;
+
+                    if(x!=62)
+                    {
+
+                        locate(x, y);
+                        cout << " ";
+                        x = 62;
+                        y = 23;
+                        locate(x, y);
+                        printf("%c", 174);
+                    }
+                    else
+                    {
+                        locate(x, y);
+                        cout << " ";
+                        y++;
+
+                        if(y>25)
+                        {
+                            y--;
+                            locate(x, y);
+                            printf("%c", 174);
+                        }
+                        else
+                        {
+                            locate(x, y);
+                            printf("%c", 174);
+                        }
+
+                    }
                 }
 
             }
@@ -802,37 +848,44 @@ int selectDraw2()
             break;
         case 72:
 
+            if(x!=20 && y == 23)
+            {
+                locate(x, y);
+                cout << " ";
+                x = 20;
+                y = 20;
+                locate(x, y);
+                printf("%c", 174);
+                vueltas--;
+            }
 
-                if(x!=20 && y == 23)
+            else
+            {
+                locate(x, y);
+                cout << " ";
+                y--;
+                if(y<20)
                 {
+                    y++;
                     locate(x, y);
-                    cout << " ";
-                    x = 20;
-                    y = 20;
+                    printf("%c", 174);
+                }
+                else
+                {
                     locate(x, y);
                     printf("%c", 174);
                 }
 
-                else{
-                    locate(x, y);
-                    cout << " ";
-                    y--;
-                    if(y<20)
-                    {
-                        y++;
-                        locate(x, y);
-                        printf("%c", 174);
-                    }
-                    else{
-                       locate(x, y);
-                        printf("%c", 174);
-                    }
+                vueltas--;
 
-                }
+            }
+
+
 
             break;
         }
     }
+
     locate(x, y);
     cout << " ";
 
