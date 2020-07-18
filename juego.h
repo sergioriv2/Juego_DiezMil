@@ -7,9 +7,9 @@ int gameplay_2(char, char);
 
 ///------------------------------------------------------
 
-int gameplay_1(int rondamax, char nombre1[15])
+int gameplay_1(char nombre1[15])
 {
-    int valorDados[6], puntuacion, lanzamiento, ronda, valorFlechita;
+    int valorDados[6], puntuacion, lanzamiento, ronda, valorFlechita, puntuacion_acu = 0, ant_puntuacion;
     int juegos[19], listaunos[3], indice = 0;
     bool jugar = true;
 
@@ -50,14 +50,15 @@ int gameplay_1(int rondamax, char nombre1[15])
             locate(6, 20);
             cout << "Lanzar dados";
             locate(6, 21);
-            cout << "Sumar puntos";
+            cout << "Sumar puntos acu.";
+            locate(6, 17);
+            cout << "Puntuacion Acu. ";
+
 
             while(jugar)
             {
-                for(int i=0; i<=rondamax; i++)
-                {
-
                     dadosPrimeraRonda(ronda, valorDados);
+
 
                     locate(42, 2);
                     setColor(GREEN);
@@ -67,15 +68,22 @@ int gameplay_1(int rondamax, char nombre1[15])
                     locate(100, 2);
                     cout << puntuacion;
                     setColor(WHITE);
+                    locate(25, 17);
+                    cout << puntuacion_acu;
 
                     valorFlechita = selectDraw2(listaunos);
 
                     switch(valorFlechita)
                     {
 
-                    case 20:
+                    case 50:
 
-                        ronda++;
+
+                        if(ronda == 0)
+                        {
+                            ronda++;
+                        }
+
                         lanzamiento++;
 
                         limpiarDados();
@@ -83,14 +91,17 @@ int gameplay_1(int rondamax, char nombre1[15])
                         ponerEnCero(juegos, 19);
                         ponerEnCero(listaunos, 3);
 
-                        gotoxy(42, 23);
+                        gotoxy(42, 20);
                         cout << "                                        ";
-                        gotoxy(42, 24);
+                        gotoxy(42, 21);
                         cout << "                                        ";
-                        gotoxy(42, 25);
+                        gotoxy(42, 22);
                         cout << "                                        ";
+                         gotoxy(22, 17);
+                        cout << "              ";
 
                         tirarDados(valorDados, juegos, 1); /// INGRESAR DADOS MANUALMENTE PARA TESTEAR 0, DADOS AL AZAR 1///le agregue puntuacion
+
                         dibujo(valorDados);
 
                         juegoD1     (valorDados, juegos);
@@ -104,39 +115,61 @@ int gameplay_1(int rondamax, char nombre1[15])
                         ordenar_minlista(juegos, listaunos);
 
                         break;
-                    case 23:
+                    case 51:
+                        ronda++;
+                        puntuacion+= puntuacion_acu;
+                        ant_puntuacion = puntuacion_acu;
+                        puntuacion_acu = 0;
+                        gotoxy(22, 17);
+                        cout << "              ";
+                        break;
+                    case 78:
                         indice = buscaruno(juegos, 1);
-                        puntuacion += sumarPuntos(indice);
-                        i--;
-                        locate(42, 23);
+                        puntuacion_acu += sumarPuntos(indice);
+                        locate(42, 20);
                         setColor(YELLOW);
                         cout << "X";
                         setColor(WHITE);
                         break;
-                    case 24:
+                    case 79:
                         indice = buscaruno(juegos, 2);
-                        puntuacion += sumarPuntos(indice);
-                        i--;
-                        locate(42, 24);
+                        puntuacion_acu += sumarPuntos(indice);
+                        locate(42, 21);
                         setColor(YELLOW);
                         cout << "X";
                         setColor(WHITE);
                         break;
-                    case 25:
+                    case 80:
                         indice = buscaruno(juegos, 3);
-                        puntuacion += sumarPuntos(indice);
-                        i--;
-                        locate(42, 25);
+                        puntuacion_acu += sumarPuntos(indice);
+                        locate(42, 22);
                         setColor(YELLOW);
                         cout << "X";
                         setColor(WHITE);
                         break;
                     }
 
+                    if(listaunos[0] == 0)
+                    {
+                        puntuacion_acu = 0;
+                        ronda++;
+                    }
+
+                    if(puntuacion == 10000)
+                    {
+                       jugar = false;
+                    }
+                    else
+                    {
+                        if(puntuacion>10000)
+                        {
+                            puntuacion-=ant_puntuacion;
+                            locate(40, 17);
+                            cout << "Te pasaste de 10.000! | Puntuacion -" << ant_puntuacion;
+                        }
+                    }
 
 
-                }///for
-                jugar = false;
             }
 
             system("cls");
@@ -146,8 +179,8 @@ int gameplay_1(int rondamax, char nombre1[15])
             cout << "Jugador: ";
             cout << nombre1;
             locate(55, 10);
-            cout << "Puntos: ";
-            cout << puntuacion;
+            cout << "Rondas: ";
+            cout << ronda;
             if(puntuacion<10000)
             {
                 locate(30, 12);
@@ -156,9 +189,9 @@ int gameplay_1(int rondamax, char nombre1[15])
             }
             else
             {
-                locate(30, 12);
+                locate(30, 15);
                 setColor(LIGHTGREEN);
-                cout << "Ganaste!!!";
+                cout << "GANASTE";
             }
             setColor(WHITE);
             anykey();
