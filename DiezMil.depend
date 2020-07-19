@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1595032691 source:c:\users\ser-a\desktop\prog\codeblocks\utn\diezmil\diezmil\main.cpp
+1595053890 source:c:\users\ser-a\desktop\prog\codeblocks\utn\diezmil\diezmil\main.cpp
 	<iostream>
 	<conio.h>
 	<stdio.h>
@@ -8,19 +8,19 @@
 	"dibujofunciones.h"
 	"juego.h"
 
-1595033940 c:\users\ser-a\desktop\prog\codeblocks\utn\diezmil\diezmil\funciones.h
+1595053988 c:\users\ser-a\desktop\prog\codeblocks\utn\diezmil\diezmil\funciones.h
 	<iostream>
 	<stdio.h>
 	<time.h>
 	"rlutil.h"
 	"dibujofunciones.h"
 
-1595036456 c:\users\ser-a\desktop\prog\codeblocks\utn\diezmil\diezmil\dibujofunciones.h
+1595050314 c:\users\ser-a\desktop\prog\codeblocks\utn\diezmil\diezmil\dibujofunciones.h
 	<iostream>
 	<stdio.h>
 	<time.h>
 	"rlutil.h"
 	"funciones.h"
 
-1595036073 c:\users\ser-a\desktop\prog\codeblocks\utn\diezmil\diezmil\juego.h
+1595093262 c:\users\ser-a\desktop\prog\codeblocks\utn\diezmil\diezmil\juego.h
 

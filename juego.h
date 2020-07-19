@@ -57,6 +57,8 @@ int gameplay_1(char nombre1[15])
 
             while(jugar)
             {
+
+
                     dadosPrimeraRonda(ronda, valorDados);
 
 
@@ -123,7 +125,7 @@ int gameplay_1(char nombre1[15])
                         gotoxy(22, 17);
                         cout << "              ";
                         break;
-                    case 78:
+                    case 78: ///--------------------
                         indice = buscaruno(juegos, 1);
                         puntuacion_acu += sumarPuntos(indice);
                         locate(42, 20);

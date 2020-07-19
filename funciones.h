@@ -25,7 +25,7 @@ void dosJugadores(char nombre1[], char nombre2[]);
 void unJugador(char nombreJ1[]);
 
 void ponerEnCero(int vec[], int tam);
-// LE PONE 0 A TODOS LOS VALORES A UN VECTOR DE TAMAÃ‘O N
+// LE PONE 0 A TODOS LOS VALORES A UN VECTOR DE TAMAÑO N
 
 void limpiarListaNombres(char lista[10][15]);
 
