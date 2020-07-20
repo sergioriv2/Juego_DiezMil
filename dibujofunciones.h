@@ -13,21 +13,26 @@ using namespace rlutil;
 ///------------------- DECLARACION DE FUNCIONES----------------------
 
 void bordes(int);
-// DIBUJO DE LAS LINEAS DEL BORDE DEL PROGRAMA
+/// DIBUJO DE LAS LINEAS DEL BORDE DEL PROGRAMA
 
 void menuPrincipal();
 
 void underlineDraw(int x, int y, int m);
-// SUBRAYADO DE TITULOS
+/// SUBRAYADO DE TITULOS
 
 void dibujoDados(int y);
-// DIBUJO DE LOS DADOS, LA Y DETERMINA LA ALTURA DE LOS DADOS
+/// DIBUJO DE LOS DADOS, LA Y DETERMINA LA ALTURA DE LOS DADOS
 
 
-int selectDraw(int x, int y, int y2, int s); // int s = saltos
-// CON ESTO SE DIBUJA LAS FLECHAS DE LOS MENUS | x = POSICION EN X DE LAS FLECHAS, y = PRIMERA OPCION DEL MENU, y2 = ULTIMA OPCION DEL MENU
+int selectDraw(int x, int y, int y2, int s); /// int s = saltos
+/// CON ESTO SE DIBUJA LAS FLECHAS DE LOS MENUS | x = POSICION EN X DE LAS FLECHAS, y = PRIMERA OPCION DEL MENU, y2 = ULTIMA OPCION DEL MENU
+
+int selectDraw2(int unos[3]);
+/// ESTE SELECT EN PARTICULAR DEVUELVE LA SUMA DE LOS VALORES QUE TIENE EN X, Y SE USA PARA LAS FLECHAS DENTRO DEL JUEGO
 
 void limpiarDados();
+
+void titulo();
 
 void dibujo(int t[]);
 
@@ -45,6 +50,14 @@ void dibujar6(int n_dado);
 
 
 ///------------------- DESARROLLO FUNCIONES ----------------------
+
+void titulo()
+{
+    locate(46, 3);
+    setColor(WHITE);
+    cout << "Bienvenido a Diez Mil";
+    underlineDraw(44, 4, 22);
+}
 
 void menuPrincipal()
 {
@@ -784,7 +797,7 @@ void dibujo(int t[])
 int selectDraw2(int unos[3]) // ASCII 80 ABAJO, 72 ARRIBA, 75 IZQUIERDA, 77 DERECHA
 {
     setColor(BLUE);
-    int x, y, key = 1, pos = 0;
+    int x, y, key = 1;
 
     x = 30;
     y = 20;
@@ -797,16 +810,15 @@ int selectDraw2(int unos[3]) // ASCII 80 ABAJO, 72 ARRIBA, 75 IZQUIERDA, 77 DERE
     {
         key = getch();
 
-        if(pos<0)
-        {
-            pos = 0;
-        }
-
         switch(key)
         {
         case 80:
             if(x == 30)
             {
+                setColor(GREY);
+                locate(6, 25);
+                cout << "* (Se suman los puntos acumulados y se pasa a la siguiente ronda)";
+                setColor(BLUE);
                 locate(x, y);
                 cout << " ";
                 y++;
@@ -819,18 +831,53 @@ int selectDraw2(int unos[3]) // ASCII 80 ABAJO, 72 ARRIBA, 75 IZQUIERDA, 77 DERE
             } /// PRIMERA COL
             else
             {
-                if(unos[pos+1]!=0)
+                if(unos[0]!=0 && unos[1] != 0 && unos[2] != 0)
                 {
                     locate(x, y);
                     cout << " ";
                     y++;
+                    if(y>=23)
+                    {
+                        y--;
+                    }
                     locate(x, y);
                     printf("%c", 174);
-                    pos++;
+                }
+                else
+                {
+                    if(unos[0]!=0 && unos[1] != 0)
+                    {
+                        locate(x, y);
+                        cout << " ";
+                        y++;
+                        if(y>=22)
+                        {
+                            y--;
+                        }
+                        locate(x, y);
+                        printf("%c", 174);
+                    }
+                    else
+                    {
+                        if(unos[0]!=0)
+                        {
+                            locate(x, y);
+                            cout << " ";
+                            y++;
+                            if(y>=21)
+                            {
+                                y--;
+                            }
+                            locate(x, y);
+                            printf("%c", 174);
+                        }
+                    }
                 }
             }
             break;
         case 72:
+            locate(6, 25);
+            cout << "                                                                 ";
             if(x == 30)
             {
                 locate(x, y);
@@ -843,7 +890,8 @@ int selectDraw2(int unos[3]) // ASCII 80 ABAJO, 72 ARRIBA, 75 IZQUIERDA, 77 DERE
                 locate(x, y);
                 printf("%c", 174);
             } /// PRIMERA COL
-            else{
+            else
+            {
                 locate(x, y);
                 cout << " ";
                 y--;
@@ -858,34 +906,45 @@ int selectDraw2(int unos[3]) // ASCII 80 ABAJO, 72 ARRIBA, 75 IZQUIERDA, 77 DERE
                     locate(x, y);
                     printf("%c", 174);
                 }
-
-                pos--;
             }
             break;
         case 75:
-            locate(x, y);
-            cout << " ";
-            x = 30;
-            y = 20;
-            locate(x, y);
-            printf("%c", 174);
-            pos--;
+            if(x == 61)
+            {
+                locate(6, 25);
+                cout << "                                                                 ";
+                locate(x, y);
+                cout << " ";
+                x = 30;
+                y = 20;
+                locate(x, y);
+                printf("%c", 174);
+            }
             break;
         case 77:
-            if(unos[0]==1)
+            if(x == 30)
             {
-            locate(x, y);
-            cout << " ";
-            x = 58;
-            y = 20;
-            locate(x, y);
-            printf("%c", 174);
+                locate(x+1, y);
+                if(unos[0]==1)
+                {
+                    locate(6, 25);
+                    cout << "                                                                 ";
+                    locate(x, y);
+                    cout << " ";
+                    x = 61;
+                    y = 20;
+                    locate(x, y);
+                    printf("%c", 174);
 
+                }
             }
+
             break;
         }
     }
 
+    locate(6, 25);
+    cout << "                                                                 ";
     locate(x, y);
     cout << " ";
 

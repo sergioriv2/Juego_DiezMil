@@ -314,8 +314,10 @@ void jugadas(int juegos[19])
                 cout<<"                   "<<endl;
                 locate(45,vueltas);
                 cout<<"Sexteto"<<endl;
-                 locate(70, vueltas);
-                cout << "10000 puntos";
+                locate(70, vueltas);
+                setColor(LIGHTGREEN);
+                cout << "Ganas el juego";
+                setColor(WHITE);
                 vueltas++;
                 break;
             }///switch
@@ -666,7 +668,6 @@ void unJugador(char nombreJ1[])
     cout << "Ingresa tu nombre:";
     locate(46,8);
     cin.getline(nombreJ1, 15);
-
     system("cls");
 
 
@@ -825,8 +826,17 @@ void tirarDados(int vecDados[], int juegos[], bool azar)
             locate(x, 27);
             cin >> vecDados[i];
             x+=2;
+
+            cin.ignore();
         }
 
+        x = 6;
+        for(int i=0; i<6; i++)
+        {
+            locate(x,27);
+            cout << " ";
+            x+=2;
+        }
     }
 
 }

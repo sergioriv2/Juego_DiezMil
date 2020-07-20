@@ -24,3 +24,28 @@
 
 1595093262 c:\users\ser-a\desktop\prog\codeblocks\utn\diezmil\diezmil\juego.h
 
+1595210254 source:c:\users\ser-a\desktop\juego_diezmil-master\main.cpp
+	<iostream>
+	<conio.h>
+	<stdio.h>
+	"rlutil.h"
+	"funciones.h"
+	"dibujofunciones.h"
+	"juego.h"
+
+1595210376 c:\users\ser-a\desktop\juego_diezmil-master\funciones.h
+	<iostream>
+	<stdio.h>
+	<time.h>
+	"rlutil.h"
+	"dibujofunciones.h"
+
+1595207376 c:\users\ser-a\desktop\juego_diezmil-master\dibujofunciones.h
+	<iostream>
+	<stdio.h>
+	<time.h>
+	"rlutil.h"
+	"funciones.h"
+
+1595214976 c:\users\ser-a\desktop\juego_diezmil-master\juego.h
+

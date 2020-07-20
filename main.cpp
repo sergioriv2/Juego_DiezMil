@@ -11,6 +11,7 @@ using namespace std;
 
 int main()
 {
+    setConsoleTitle("Diez Mil");
     int valorFlechita;
     int  Val = 0;
     char listanombres[10][15], nombre1[15], nombre2[15];
@@ -31,6 +32,8 @@ int main()
         system("cls");
 
         bordes(2);
+
+        titulo();
 
         menuPrincipal();
 
@@ -76,6 +79,10 @@ int main()
 
             bordes(1);
 
+            locate(5, 3);
+            cout << "Nombres";
+            locate(20, 3);
+            cout << "Ronda ganadora";
             locate(5, ValorY);
 
             for(int i=0; i<10; i++)
@@ -83,12 +90,22 @@ int main()
                 ValorY++;
                 locate(5, ValorY);
                 cout << i+1 << ". "<< listanombres[i];
-                cout << "    " << puntajes[i] <<"";
             }
 
             ValorY = 5;
 
+            for(int i=0; i<10; i++)
+            {
+                ValorY++;
+                locate(20, ValorY);
+                cout << "    " << puntajes[i] <<"";
+            }
+
+
+            locate(5, 20);
+
             system("pause");
+
             break;
         case 12:   // SALIR
 
