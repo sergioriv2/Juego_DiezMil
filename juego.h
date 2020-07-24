@@ -210,6 +210,7 @@ int gameplay_1(char nombre1[15])
         if(listaunos[0] == 0 && listaunos[1] == 0 && listaunos[2] == 0 && ceroForzado == false) /// --------- ESTO ES SI NO HAY JUGADAS GANADORAS
         {
             puntuacion_acu = 0;
+            lanzamiento = 0;
             ronda++;
             locate(6, 25);
             setColor(RED);
@@ -493,6 +494,7 @@ int gameplay_2(char nombre1[15], char nombre2[15])
             if(listaunos[0] == 0 && listaunos[1] == 0 && listaunos[2] == 0 && ceroForzado == false) /// EN CASO DE QUE NO HAYA JUGADAS GANADORAS, SE MUESTRA ESTE MENSAJE
             {
                 puntuacion_acu = 0;
+                lanzamiento = 0;
                 ronda++;
                 locate(6, 25);
                 setColor(RED);
@@ -681,7 +683,8 @@ int gameplay_2(char nombre1[15], char nombre2[15])
             }
             if(listaunos[0] == 0 && listaunos[1] == 0 && listaunos[2] == 0 && ceroForzado == false) /// EN CASO DE QUE NO HAYA JUGADAS GANADORAS, SE MUESTRA ESTE MENSAJE
             {
-                puntuacion_acu = 0;
+                puntuacion_acu2 = 0;
+                lanzamiento2 = 0;
                 ronda++;
                 locate(6, 25);
                 setColor(RED);
