@@ -53,10 +53,16 @@ void dibujar6(int n_dado);
 
 void titulo()
 {
-    locate(46, 3);
+    locate(35, 3);
     setColor(WHITE);
-    cout << "Bienvenido a Diez Mil";
-    underlineDraw(44, 4, 22);
+
+    // Update 2021
+    //==========================
+    std::string mensaje = "Bienvenido a Diez Mil - Hecho por Sergio Rivera";
+    cout << mensaje;
+    //========================
+
+    underlineDraw(34, 4, mensaje.length());
 }
 
 void menuPrincipal()

@@ -1,3 +1,6 @@
+#define _WIN32_WINNT 0x0500
+#include <windows.h>
+
 #include <iostream>
 #include <conio.h>
 #include <stdio.h>
@@ -11,7 +14,10 @@ using namespace std;
 
 int main()
 {
-    setConsoleTitle("Diez Mil");
+    HWND consoleWindow = GetConsoleWindow();
+    SetWindowLong(consoleWindow, GWL_STYLE, GetWindowLong(consoleWindow, GWL_STYLE) & ~WS_MAXIMIZEBOX & ~WS_SIZEBOX);
+
+    setConsoleTitle("Diez Mil - Sergio Rivera");
     int valorFlechita;
     int  Val = 0;
     char listanombres[10][15], nombre1[15], nombre2[15];
@@ -55,7 +61,7 @@ int main()
 
             // PUNTUACION FINAL
 
-            strcpy(listanombres[Val], nombre1);
+            strcpy_s(listanombres[Val], nombre1);
             puntajes[Val] = puntuacion;
             Val++;
 

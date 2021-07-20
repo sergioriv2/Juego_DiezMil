@@ -9,8 +9,13 @@ int gameplay_2(char, char);
 
 int gameplay_1(char nombre1[15])
 {
-    int valorDados[6], puntuacion, lanzamiento, ronda, valorFlechita, puntuacion_acu = 0, ant_puntuacion = 0;
-    int juegos[19], listaunos[3], indice = 0;
+    int valorDados[6] = { 0, 0, 0, 0, 0, 0 };
+
+    int puntuacion, lanzamiento, ronda,  valorFlechita, puntuacion_acu, ant_puntuacion, indice;
+    puntuacion = lanzamiento = ronda = valorFlechita = puntuacion_acu = ant_puntuacion = indice = 0;
+
+    int juegos[19], listaunos[3];
+
     bool jugar = true, ceroForzado = false;
 
     puntuacion = 0;
